@@ -1,6 +1,7 @@
 <h1>Dépôt de la bataille navale :</h1>
 
 <p>Dépôt personnel de l'avancée du projet de la bataille navale. Ce fichier README contient l'ensemble des spécidication des classes et des fontions associées</p>
+<hr/>
 <h3> La classe Joueur :</h3>
 <br/>
 <b><i>en cours...</i></b>
