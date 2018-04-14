@@ -16,3 +16,4 @@
    <h5> private char getY(char coord) :</h5>
     <p>Cette fontion à pour but de récupérer une chaine de caractère (ex: "B3") et de renvoyer le caractère associé (ici B)</p>
     <hr/>
+    

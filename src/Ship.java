@@ -1,140 +1,241 @@
+import static java.lang.Character.isLetter;
+
 // Le bateau possède une coordonnée X (Lettre + Chiffre)  && une coordonnée Y (Lettre + Chiffre)
 public class Ship {
 
     //Déclaration des variables de la classe:
-    private char startCoord, endCoord;
-    private char coordBateau[]; // On y stockera toute les coordonnées des bateaux grâce à la fonction traitement
+    private String startCoord, endCoord;
+    private char startY, endY;
+    private int startX, endX;
+    int lenght = 0;
+    private String[] coordBateau; // On y stockera toute les coordonnées des bateaux grâce à la fonction traitement
+    private boolean vertical;
 
-    public Ship(char startCoord, char endCoord){ // Constructeur d'un bateau
+
+
+    public Ship(String startCoord, String endCoord){ // Constructeur d'un bateau
         this.startCoord = startCoord;
         this.endCoord = endCoord;
-        this.coordBateau = traitement(char startCoord, char endCoord);
+        this.coordBateau = traitement(startCoord, endCoord);
     }
 
+
     // La fonction de traitement permet de récupérer un ensemble de coordonnées pour notre bateau
-    private char[] traitement(char startCoord, char endCoord){
+    private String[] traitement(String startCoord, String endCoord) {
+
         // L'ensemble des coordonnées sont enregistrées de la forme "Lettre + Chiffre : B3, F3, etc..."
-        private char[] coord;
 
-        // On récupère les lettres
-        char lettreStart = getY(startCoord);
-        char lettreEnd = getY(endCoord);
+        // On décompose les coordonnées
+        startX = getX(startCoord);
+        startY = getY(startCoord);
+        endX = getX(endCoord);
+        endY = getY(endCoord);
+        String[] tab;
 
-        // On récupère les chiffres
-        char chiffreStart = getX(startCoord);
-        char chiffreEnd = getX(endCoord);
-
-        // Si le bateau est positionné de façon verticale
-        int i;
-        if (chiffreEnd == chiffreStart && lettreEnd != lettreStart){
-            if (lettreStart < lettreEnd){
-                int j = 0;
-                for (char i = lettreStart, i<lettreEnd, i++){
-                    coord[j] = (char) (i+chiffreStart);
-                }
-                return coord;
-            }
-            else if(lettreStart > lettreEnd){
-                int j = 0;
-                for (char i = lettreEnd, i<lettreStart, i++){
-                    coord[j] = ((char) i+chiffreStart);
-                }
-                return coord;
+        //Si les lettre sont identiques et que les chiffres sont différents
+        if (startX != endX && startY == endY) {
+            if (this.startX > this.endX) {
+                tab = tableGeneratorH(startX, endX, startY);
+            } else if (endX > startX) {
+                tab = tableGeneratorH(endX, startX, startY);
+            } else {
+                System.out.println("Les coordonnées sont incorrectes, bateau d'une seule case");
+                tab = new String[5];
+                vertical = false;
             }
         }
-
-        // Si le bateau est positionné à l'horizontale
-        else if (chiffreEnd != chiffreStart && lettreEnd == lettreStart){
-            if (chiffreStart < chiffreEnd){
-                int j = 0;
-                for (char i = chiffreStart, i<chiffreEnd, i++){
-                    coord[j] = (char) (lettreStart+i);
-                }
-                return coord;
+        //Si les chiffres sont identiques et que les lettres sont différentes
+        else if (startY != endY && startX == endX) {
+            if (startY > endY) {
+                tab = tableGeneratorV(startY, endY, startX);
+            } else if (endY > startY) {
+                tab = tableGeneratorV(endY, startY, startX);
+            } else {
+                System.out.println("Les coordonnées sont incorrectes, bateau d'une seule case");
+                tab = new String[5];
             }
-            else if(chiffreStart > chiffreEnd){
-                int j = 0;
-                for (char i = chiffreEnd, i<chiffreStart, i++){
-                    coord[j] = (char) (lettreStart+i);
-                }
-                return coord;
-            }
+            vertical = true;
+        } else {
+            System.out.println("Les coordonnées sont incorrectes, le bateau est en diagonale ou ne fait qu'une case");
+            tab = new String[5];
         }
-
-        // Le bateau est positionné en diagonale
-        else{
-            System.out.println("Vos coordonnées sont incorrectes, le bateau est positionné en diagonale");
-            // Voir gestion des erreurs avec le prof
-        }
+        return tab;
     }
 
 
     // Fonction de récupération du chiffre de la coordonnée
-    private char getX(char coord){
-        if(Character.getNumericValue(coord[0]) != -1){
-            return coord[0];
-        }else if(Character.getNumericValue(coord[1]) != -1){
-            return coord[1];
-        }else{
-            System.out.println("La coordonnée entrée n'est pas correcte");
+    private int getX(String coord){
+        StringBuilder x = new StringBuilder(coord);
+        String newCoord ="";
+        for(int i = 0 ; i< coord.length(); i++){
+            if (isLetter(coord.charAt(i))){
+                x.deleteCharAt(i); //On retire la lettre de la coordonée
+                newCoord = x.toString();
+            }
         }
+        int resultat = Integer.parseInt(newCoord);
+        return resultat;
     }
+
 
 
     // Fonction de récupération de la lettre de la coordonnée
-    private char getY(char coord){
-        if(Character.getNumericValue(coord[0]) == -1){
-            return coord[0];
-        }else if(Character.getNumericValue(coord[1]) == -1){
-            return coord[1];
-        }else{
-            // Gestion d'une erreur voir avec le prof
+    private char getY(String coord){
+        //Par défaut, la valeur sera A.
+        char Y ='A';
+        for(int i = 0 ; i< coord.length(); i++){
+            if (isLetter(coord.charAt(i))){
+                Y = coord.charAt(i);
+            }
         }
+        return Y;
     }
 
     // Vérifie si le bateau est touché ou pas
-    public boolean isHit(char coord){
-        private boolean hit = false;
-        // On vérifie que la coordonnée soit correctement écrite
-        coord = arrange(coord);
-        while(i < this.coordBateau.length || not(hit)){
-            if(this.coordBateau[i] == coord){
-                hit = true;
-            } else{
-                i++;
+    public boolean isHit(String coord) {
+        int xTir = getX(coord);
+        char yTir = getY(coord);
+        boolean hit;
+        System.out.println(this.getStartX());
+        if (!this.vertical) {
+
+            if (this.startX > this.endX) {
+                hit = (this.startX > xTir && xTir > this.endX);
+                System.out.println(Integer.toString(this.startX)+","+Integer.toString(xTir)+","+Integer.toString(this.endX));
+                System.out.println("Non vertical et Start > End");
+            }else{
+                hit = (this.getEndX() > xTir && xTir > this.getStartX());
+                System.out.println(Integer.toString(this.endX)+","+Integer.toString(xTir)+","+Integer.toString(this.startX));
+                System.out.println("Non vertical et End > Start");
+            }
+        }else{
+            if (this.getStartY() > this.getEndY()) {
+                hit = (this.getStartY() > yTir && yTir > this.getEndY());
+            }else{
+                hit = (this.getEndY() > yTir && yTir > this.getStartY());
             }
         }
         return hit;
     }
 
-    // Vérifie si le bateau est détruit ou pas
-    // Si la longeur du tableau des coordonnées est égal à 0
-    public boolean isDestroyed(){
-        if (this.coordBateau.length == 0){
-            return true;
-        }
-        else {return false;
+
+    public  void editShipCoord(String coord){
+        int i = 0;
+        boolean end = false;
+        while(i < this.coordBateau.length || !end){
+            if (coordBateau[i].equals(coord)){
+                coordBateau[i] = "X";
+                end = true;
+            }
+            i++;
         }
     }
 
-    //Fonction qui adapte la coordonnée saisie au "normes" de notre implémentation (Lettre + Chiffre)
-    public char arrange(char coord){
-        private char coordValide;
-        if(Character.getNumericValue(coord[0]) == -1 && Character.getNumericValue(coord[1]) != -1 ){
-            return coord;
-        }else if(Character.getNumericValue(coord[1]) == -1 && Character.getNumericValue(coord[0]) != -1 ){
-            coordValide = coord[1];
-            coordValide.append(coord[0]);
-            return coordValide;
-        }else{
-            System.out.println("La coordonnée que vous avez entré n'est pas correcte");
+
+
+    // Vérifie si le bateau est détruit ou pas
+    // Si l'ensemble des string sont égal à X, il ne reste plus de case
+    public boolean isDestroyed(){
+        boolean destroyed = true;
+        int i = 0;
+        while(i< coordBateau.length && destroyed){
+            if (coordBateau[i] != "X"){
+                destroyed = false;
+            }else{
+                i++;
+            }
         }
+        return destroyed;
     }
 
     // Zone des getters et des setters :
 
-    public char[] getCoordBateau() {
-        return coordBateau;
+    //Cette fonction génère le tableau de coordonnées pour le bateau
+    // Ici x1 > x2 et y est la lettre identique;
+
+    private String[] tableGeneratorH(int x1, int x2, char y){
+        int j=0;
+        int length = x1 - x2 +1 ;
+        int k = x2;
+        String[] tab = new String[length];
+        for(int i= 0; i<tab.length; i++){
+            tab[i] = y+Integer.toString(k);
+            System.out.println(tab[i]);
+            k++;
+        }
+        return tab;
+    }
+
+    // Ici, la lettre y1 est supérieure à y2 et le chiffre X est identique
+    private String[] tableGeneratorV(char y1, char y2, int x){
+        int j=0;
+        int length = (int) y1 - (int) y2 +1 ;
+        char k = y2;
+        String[] tab = new String[length];
+        for(int i= 0; i<tab.length; i++){
+            tab[i] = k + Integer.toString(x);
+            System.out.println(Integer.toString(x));
+            System.out.println(tab[i]);
+            k++;
+        }
+        return tab;
+    }
+
+
+
+    public int getLenght() {
+        return this.lenght;
+    }
+
+    public String printCoordBateau() {
+        String tab ="[";
+        for(int i=0; i<this.coordBateau.length; i++){
+            tab = tab + coordBateau[i]+",";
+        }
+        tab+="]";
+        return tab;
+    }
+
+    private int getStartX(){
+        return this.startX;
+    }
+
+    private int getEndX(){
+        return this.endX;
+    }
+
+    private char getStartY(){
+        return this.startY;
+    }
+
+    private char getEndY(){
+        return this.endY;
+    }
+
+    public boolean isIn(String coord) { // Fonction qui vérifie que la coordonnée n'est pas déjà sur le beateu (éviter de poser au même endroit)
+        int xTir = getX(coord);
+        char yTir = getY(coord);
+        boolean hit;
+        System.out.println(this.getStartX());
+        if (!this.vertical) {
+
+            if (this.startX > this.endX) {
+                hit = (this.startX > xTir && xTir > this.endX);
+                System.out.println(Integer.toString(this.startX)+","+Integer.toString(xTir)+","+Integer.toString(this.endX));
+                System.out.println("Non vertical et Start > End");
+            }else{
+                hit = (this.getEndX() > xTir && xTir > this.getStartX());
+                System.out.println(Integer.toString(this.endX)+","+Integer.toString(xTir)+","+Integer.toString(this.startX));
+                System.out.println("Non vertical et End > Start");
+            }
+        }else{
+            if (this.getStartY() > this.getEndY()) {
+                hit = (this.getStartY() > yTir && yTir > this.getEndY());
+            }else{
+                hit = (this.getEndY() > yTir && yTir > this.getStartY());
+            }
+        }
+        return hit;
     }
 
 }
