@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d2afd5c-0060-4a91-88d2-734b6f501eb4" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Grille.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/GrilleBateau.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/GrilleTir.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/TestShip.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change beforePath="$PROJECT_DIR$/src/Grille.java" afterPath="$PROJECT_DIR$/src/Grille.java" />
+      <change beforePath="$PROJECT_DIR$/src/GrilleBateau.java" afterPath="$PROJECT_DIR$/src/GrilleBateau.java" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" afterPath="$PROJECT_DIR$/src/Player.java" />
       <change beforePath="$PROJECT_DIR$/src/Ship.java" afterPath="$PROJECT_DIR$/src/Ship.java" />
     </list>
@@ -19,47 +16,67 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DockManager">
+    <window id="2">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="Ship.java" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/Ship.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="870">
+                    <caret line="138" column="23" lean-forward="true" selection-start-line="138" selection-start-column="23" selection-end-line="138" selection-end-column="23" />
+                    <folding>
+                      <element signature="method#getX#0;class#Ship#0" expanded="false" />
+                      <element signature="method#isHit#0;class#Ship#0" expanded="false" />
+                      <element signature="method#editShipCoord#0;class#Ship#0" expanded="false" />
+                      <element signature="method#isDestroyed#0;class#Ship#0" expanded="false" />
+                      <element signature="method#tableGeneratorH#0;class#Ship#0" expanded="false" />
+                      <element signature="method#tableGeneratorV#0;class#Ship#0" expanded="false" />
+                      <element signature="method#printCoordBateau#0;class#Ship#0" expanded="false" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/Player.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="-333">
+                    <caret line="37" column="39" lean-forward="false" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
+                    <folding>
+                      <element signature="imports" expanded="true" />
+                      <element signature="method#shipLengthControl#0;class#Player#0" expanded="false" />
+                      <element signature="method#matrixPositionControl#0;class#Player#0" expanded="false" />
+                      <element signature="method#convertCoord#0;class#Player#0" expanded="false" />
+                      <element signature="method#getX#0;class#Player#0" expanded="false" />
+                      <element signature="method#getY#0;class#Player#0" expanded="false" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Ship.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Ship.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="43" />
-              <folding>
-                <element signature="e#6197#6198#0" expanded="true" />
-                <element signature="e#6231#6232#0" expanded="true" />
-                <element signature="e#6478#6479#0" expanded="true" />
-                <element signature="e#6512#6513#0" expanded="true" />
-                <element signature="e#6540#6541#0" expanded="true" />
-                <element signature="e#6572#6573#0" expanded="true" />
-                <element signature="e#6603#6604#0" expanded="true" />
-                <element signature="e#6637#6638#0" expanded="true" />
-                <element signature="e#6666#6667#0" expanded="true" />
-                <element signature="e#6698#6699#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="TestShip.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TestShip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="14" lean-forward="false" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+            <state relative-caret-position="330">
+              <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Player.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="31" column="55" lean-forward="false" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -74,21 +91,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GrilleBateau.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GrilleBateau.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GrilleBateau.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="60">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding>
+                <element signature="method#GrilleBateau#0;class#GrilleBateau#0" expanded="false" />
+                <element signature="method#getOccupe#0;class#GrilleBateau#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Grille.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Grille.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Grille.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
+            <state relative-caret-position="390">
+              <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -126,11 +146,11 @@
         <option value="$PROJECT_DIR$/src/TestShipTest.java" />
         <option value="$PROJECT_DIR$/src/Ship2.java" />
         <option value="$PROJECT_DIR$/src/TestShip.java" />
-        <option value="$PROJECT_DIR$/src/Ship.java" />
-        <option value="$PROJECT_DIR$/src/Player.java" />
         <option value="$PROJECT_DIR$/src/GrilleTir.java" />
-        <option value="$PROJECT_DIR$/src/GrilleBateau.java" />
         <option value="$PROJECT_DIR$/src/Grille.java" />
+        <option value="$PROJECT_DIR$/src/Ship.java" />
+        <option value="$PROJECT_DIR$/src/GrilleBateau.java" />
+        <option value="$PROJECT_DIR$/src/Player.java" />
       </list>
     </option>
   </component>
@@ -140,9 +160,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-1579" />
+    <option name="y" value="-1262" />
     <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="height" value="803" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -162,6 +184,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -178,10 +203,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -329,15 +351,16 @@
       <workItem from="1522770017679" duration="4154000" />
       <workItem from="1522774600768" duration="4799000" />
       <workItem from="1523026163129" duration="8446000" />
-      <workItem from="1523694362723" duration="5000" />
+      <workItem from="1523694362723" duration="918000" />
+      <workItem from="1523780834600" duration="14342000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44733000" />
+    <option name="totallyTimeSpent" value="59988000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="-1579" y="-1262" width="1440" height="803" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -347,8 +370,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17411764" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17411764" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -358,8 +381,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -387,16 +410,79 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="43" />
           <folding>
-            <element signature="e#6197#6198#0" expanded="true" />
-            <element signature="e#6231#6232#0" expanded="true" />
-            <element signature="e#6478#6479#0" expanded="true" />
-            <element signature="e#6512#6513#0" expanded="true" />
-            <element signature="e#6540#6541#0" expanded="true" />
-            <element signature="e#6572#6573#0" expanded="true" />
-            <element signature="e#6603#6604#0" expanded="true" />
-            <element signature="e#6637#6638#0" expanded="true" />
-            <element signature="e#6666#6667#0" expanded="true" />
-            <element signature="e#6698#6699#0" expanded="true" />
+            <element signature="method#getX#0;class#Ship#0" expanded="false" />
+            <element signature="method#isHit#0;class#Ship#0" expanded="false" />
+            <element signature="method#editShipCoord#0;class#Ship#0" expanded="false" />
+            <element signature="method#isDestroyed#0;class#Ship#0" expanded="false" />
+            <element signature="method#tableGeneratorH#0;class#Ship#0" expanded="false" />
+            <element signature="method#tableGeneratorV#0;class#Ship#0" expanded="false" />
+            <element signature="method#printCoordBateau#0;class#Ship#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestShip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="14" lean-forward="false" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GrilleTir.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="30" lean-forward="false" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GrilleBateau.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <element signature="method#GrilleBateau#0;class#GrilleBateau#0" expanded="false" />
+            <element signature="method#getOccupe#0;class#GrilleBateau#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Grille.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="65" column="21" lean-forward="true" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#shipLengthControl#0;class#Player#0" expanded="false" />
+            <element signature="method#matrixPositionControl#0;class#Player#0" expanded="false" />
+            <element signature="method#convertCoord#0;class#Player#0" expanded="false" />
+            <element signature="method#getX#0;class#Player#0" expanded="false" />
+            <element signature="method#getY#0;class#Player#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ship.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="43" />
+          <folding>
+            <element signature="method#getX#0;class#Ship#0" expanded="false" />
+            <element signature="method#isHit#0;class#Ship#0" expanded="false" />
+            <element signature="method#editShipCoord#0;class#Ship#0" expanded="false" />
+            <element signature="method#isDestroyed#0;class#Ship#0" expanded="false" />
+            <element signature="method#tableGeneratorH#0;class#Ship#0" expanded="false" />
+            <element signature="method#tableGeneratorV#0;class#Ship#0" expanded="false" />
+            <element signature="method#printCoordBateau#0;class#Ship#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -415,6 +501,11 @@
           <caret line="31" column="55" lean-forward="false" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#shipLengthControl#0;class#Player#0" expanded="false" />
+            <element signature="method#matrixPositionControl#0;class#Player#0" expanded="false" />
+            <element signature="method#convertCoord#0;class#Player#0" expanded="false" />
+            <element signature="method#getX#0;class#Player#0" expanded="false" />
+            <element signature="method#getY#0;class#Player#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -423,7 +514,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="method#GrilleBateau#0;class#GrilleBateau#0" expanded="false" />
+            <element signature="method#getOccupe#0;class#GrilleBateau#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -448,16 +542,13 @@
         <state relative-caret-position="1920">
           <caret line="128" column="13" lean-forward="true" selection-start-line="128" selection-start-column="13" selection-end-line="128" selection-end-column="13" />
           <folding>
-            <element signature="e#6197#6198#0" expanded="true" />
-            <element signature="e#6231#6232#0" expanded="true" />
-            <element signature="e#6478#6479#0" expanded="true" />
-            <element signature="e#6512#6513#0" expanded="true" />
-            <element signature="e#6540#6541#0" expanded="true" />
-            <element signature="e#6572#6573#0" expanded="true" />
-            <element signature="e#6603#6604#0" expanded="true" />
-            <element signature="e#6637#6638#0" expanded="true" />
-            <element signature="e#6666#6667#0" expanded="true" />
-            <element signature="e#6698#6699#0" expanded="true" />
+            <element signature="method#getX#0;class#Ship#0" expanded="false" />
+            <element signature="method#isHit#0;class#Ship#0" expanded="false" />
+            <element signature="method#editShipCoord#0;class#Ship#0" expanded="false" />
+            <element signature="method#isDestroyed#0;class#Ship#0" expanded="false" />
+            <element signature="method#tableGeneratorH#0;class#Ship#0" expanded="false" />
+            <element signature="method#tableGeneratorV#0;class#Ship#0" expanded="false" />
+            <element signature="method#printCoordBateau#0;class#Ship#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -476,6 +567,11 @@
           <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#shipLengthControl#0;class#Player#0" expanded="false" />
+            <element signature="method#matrixPositionControl#0;class#Player#0" expanded="false" />
+            <element signature="method#convertCoord#0;class#Player#0" expanded="false" />
+            <element signature="method#getX#0;class#Player#0" expanded="false" />
+            <element signature="method#getY#0;class#Player#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -485,16 +581,13 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6197#6198#0" expanded="true" />
-            <element signature="e#6231#6232#0" expanded="true" />
-            <element signature="e#6478#6479#0" expanded="true" />
-            <element signature="e#6512#6513#0" expanded="true" />
-            <element signature="e#6540#6541#0" expanded="true" />
-            <element signature="e#6572#6573#0" expanded="true" />
-            <element signature="e#6603#6604#0" expanded="true" />
-            <element signature="e#6637#6638#0" expanded="true" />
-            <element signature="e#6666#6667#0" expanded="true" />
-            <element signature="e#6698#6699#0" expanded="true" />
+            <element signature="method#getX#0;class#Ship#0" expanded="false" />
+            <element signature="method#isHit#0;class#Ship#0" expanded="false" />
+            <element signature="method#editShipCoord#0;class#Ship#0" expanded="false" />
+            <element signature="method#isDestroyed#0;class#Ship#0" expanded="false" />
+            <element signature="method#tableGeneratorH#0;class#Ship#0" expanded="false" />
+            <element signature="method#tableGeneratorV#0;class#Ship#0" expanded="false" />
+            <element signature="method#printCoordBateau#0;class#Ship#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -530,6 +623,11 @@
           <caret line="2" column="36" lean-forward="false" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#shipLengthControl#0;class#Player#0" expanded="false" />
+            <element signature="method#matrixPositionControl#0;class#Player#0" expanded="false" />
+            <element signature="method#convertCoord#0;class#Player#0" expanded="false" />
+            <element signature="method#getX#0;class#Player#0" expanded="false" />
+            <element signature="method#getY#0;class#Player#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -539,16 +637,13 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6197#6198#0" expanded="true" />
-            <element signature="e#6231#6232#0" expanded="true" />
-            <element signature="e#6478#6479#0" expanded="true" />
-            <element signature="e#6512#6513#0" expanded="true" />
-            <element signature="e#6540#6541#0" expanded="true" />
-            <element signature="e#6572#6573#0" expanded="true" />
-            <element signature="e#6603#6604#0" expanded="true" />
-            <element signature="e#6637#6638#0" expanded="true" />
-            <element signature="e#6666#6667#0" expanded="true" />
-            <element signature="e#6698#6699#0" expanded="true" />
+            <element signature="method#getX#0;class#Ship#0" expanded="false" />
+            <element signature="method#isHit#0;class#Ship#0" expanded="false" />
+            <element signature="method#editShipCoord#0;class#Ship#0" expanded="false" />
+            <element signature="method#isDestroyed#0;class#Ship#0" expanded="false" />
+            <element signature="method#tableGeneratorH#0;class#Ship#0" expanded="false" />
+            <element signature="method#tableGeneratorV#0;class#Ship#0" expanded="false" />
+            <element signature="method#printCoordBateau#0;class#Ship#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -569,6 +664,11 @@
           <caret line="2" column="36" lean-forward="false" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#shipLengthControl#0;class#Player#0" expanded="false" />
+            <element signature="method#matrixPositionControl#0;class#Player#0" expanded="false" />
+            <element signature="method#convertCoord#0;class#Player#0" expanded="false" />
+            <element signature="method#getX#0;class#Player#0" expanded="false" />
+            <element signature="method#getY#0;class#Player#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -586,16 +686,13 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6197#6198#0" expanded="true" />
-            <element signature="e#6231#6232#0" expanded="true" />
-            <element signature="e#6478#6479#0" expanded="true" />
-            <element signature="e#6512#6513#0" expanded="true" />
-            <element signature="e#6540#6541#0" expanded="true" />
-            <element signature="e#6572#6573#0" expanded="true" />
-            <element signature="e#6603#6604#0" expanded="true" />
-            <element signature="e#6637#6638#0" expanded="true" />
-            <element signature="e#6666#6667#0" expanded="true" />
-            <element signature="e#6698#6699#0" expanded="true" />
+            <element signature="method#getX#0;class#Ship#0" expanded="false" />
+            <element signature="method#isHit#0;class#Ship#0" expanded="false" />
+            <element signature="method#editShipCoord#0;class#Ship#0" expanded="false" />
+            <element signature="method#isDestroyed#0;class#Ship#0" expanded="false" />
+            <element signature="method#tableGeneratorH#0;class#Ship#0" expanded="false" />
+            <element signature="method#tableGeneratorV#0;class#Ship#0" expanded="false" />
+            <element signature="method#printCoordBateau#0;class#Ship#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -614,6 +711,11 @@
           <caret line="2" column="36" lean-forward="false" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#shipLengthControl#0;class#Player#0" expanded="false" />
+            <element signature="method#matrixPositionControl#0;class#Player#0" expanded="false" />
+            <element signature="method#convertCoord#0;class#Player#0" expanded="false" />
+            <element signature="method#getX#0;class#Player#0" expanded="false" />
+            <element signature="method#getY#0;class#Player#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -623,16 +725,13 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6197#6198#0" expanded="true" />
-            <element signature="e#6231#6232#0" expanded="true" />
-            <element signature="e#6478#6479#0" expanded="true" />
-            <element signature="e#6512#6513#0" expanded="true" />
-            <element signature="e#6540#6541#0" expanded="true" />
-            <element signature="e#6572#6573#0" expanded="true" />
-            <element signature="e#6603#6604#0" expanded="true" />
-            <element signature="e#6637#6638#0" expanded="true" />
-            <element signature="e#6666#6667#0" expanded="true" />
-            <element signature="e#6698#6699#0" expanded="true" />
+            <element signature="method#getX#0;class#Ship#0" expanded="false" />
+            <element signature="method#isHit#0;class#Ship#0" expanded="false" />
+            <element signature="method#editShipCoord#0;class#Ship#0" expanded="false" />
+            <element signature="method#isDestroyed#0;class#Ship#0" expanded="false" />
+            <element signature="method#tableGeneratorH#0;class#Ship#0" expanded="false" />
+            <element signature="method#tableGeneratorV#0;class#Ship#0" expanded="false" />
+            <element signature="method#printCoordBateau#0;class#Ship#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -651,6 +750,11 @@
           <caret line="2" column="36" lean-forward="false" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#shipLengthControl#0;class#Player#0" expanded="false" />
+            <element signature="method#matrixPositionControl#0;class#Player#0" expanded="false" />
+            <element signature="method#convertCoord#0;class#Player#0" expanded="false" />
+            <element signature="method#getX#0;class#Player#0" expanded="false" />
+            <element signature="method#getY#0;class#Player#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -660,16 +764,13 @@
         <state relative-caret-position="255">
           <caret line="17" column="61" lean-forward="false" selection-start-line="17" selection-start-column="61" selection-end-line="17" selection-end-column="61" />
           <folding>
-            <element signature="e#6197#6198#0" expanded="true" />
-            <element signature="e#6231#6232#0" expanded="true" />
-            <element signature="e#6478#6479#0" expanded="true" />
-            <element signature="e#6512#6513#0" expanded="true" />
-            <element signature="e#6540#6541#0" expanded="true" />
-            <element signature="e#6572#6573#0" expanded="true" />
-            <element signature="e#6603#6604#0" expanded="true" />
-            <element signature="e#6637#6638#0" expanded="true" />
-            <element signature="e#6666#6667#0" expanded="true" />
-            <element signature="e#6698#6699#0" expanded="true" />
+            <element signature="method#getX#0;class#Ship#0" expanded="false" />
+            <element signature="method#isHit#0;class#Ship#0" expanded="false" />
+            <element signature="method#editShipCoord#0;class#Ship#0" expanded="false" />
+            <element signature="method#isDestroyed#0;class#Ship#0" expanded="false" />
+            <element signature="method#tableGeneratorH#0;class#Ship#0" expanded="false" />
+            <element signature="method#tableGeneratorV#0;class#Ship#0" expanded="false" />
+            <element signature="method#printCoordBateau#0;class#Ship#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -680,6 +781,11 @@
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#shipLengthControl#0;class#Player#0" expanded="false" />
+            <element signature="method#matrixPositionControl#0;class#Player#0" expanded="false" />
+            <element signature="method#convertCoord#0;class#Player#0" expanded="false" />
+            <element signature="method#getX#0;class#Player#0" expanded="false" />
+            <element signature="method#getY#0;class#Player#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -697,16 +803,13 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6197#6198#0" expanded="true" />
-            <element signature="e#6231#6232#0" expanded="true" />
-            <element signature="e#6478#6479#0" expanded="true" />
-            <element signature="e#6512#6513#0" expanded="true" />
-            <element signature="e#6540#6541#0" expanded="true" />
-            <element signature="e#6572#6573#0" expanded="true" />
-            <element signature="e#6603#6604#0" expanded="true" />
-            <element signature="e#6637#6638#0" expanded="true" />
-            <element signature="e#6666#6667#0" expanded="true" />
-            <element signature="e#6698#6699#0" expanded="true" />
+            <element signature="method#getX#0;class#Ship#0" expanded="false" />
+            <element signature="method#isHit#0;class#Ship#0" expanded="false" />
+            <element signature="method#editShipCoord#0;class#Ship#0" expanded="false" />
+            <element signature="method#isDestroyed#0;class#Ship#0" expanded="false" />
+            <element signature="method#tableGeneratorH#0;class#Ship#0" expanded="false" />
+            <element signature="method#tableGeneratorV#0;class#Ship#0" expanded="false" />
+            <element signature="method#printCoordBateau#0;class#Ship#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -717,6 +820,11 @@
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#shipLengthControl#0;class#Player#0" expanded="false" />
+            <element signature="method#matrixPositionControl#0;class#Player#0" expanded="false" />
+            <element signature="method#convertCoord#0;class#Player#0" expanded="false" />
+            <element signature="method#getX#0;class#Player#0" expanded="false" />
+            <element signature="method#getY#0;class#Player#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -739,6 +847,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Grille.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestShip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GrilleTir.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -749,54 +873,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GrilleBateau.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="60">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="method#GrilleBateau#0;class#GrilleBateau#0" expanded="false" />
+            <element signature="method#getOccupe#0;class#GrilleBateau#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Ship.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="43" />
+        <state relative-caret-position="870">
+          <caret line="138" column="23" lean-forward="true" selection-start-line="138" selection-start-column="23" selection-end-line="138" selection-end-column="23" />
           <folding>
-            <element signature="e#6197#6198#0" expanded="true" />
-            <element signature="e#6231#6232#0" expanded="true" />
-            <element signature="e#6478#6479#0" expanded="true" />
-            <element signature="e#6512#6513#0" expanded="true" />
-            <element signature="e#6540#6541#0" expanded="true" />
-            <element signature="e#6572#6573#0" expanded="true" />
-            <element signature="e#6603#6604#0" expanded="true" />
-            <element signature="e#6637#6638#0" expanded="true" />
-            <element signature="e#6666#6667#0" expanded="true" />
-            <element signature="e#6698#6699#0" expanded="true" />
+            <element signature="method#getX#0;class#Ship#0" expanded="false" />
+            <element signature="method#isHit#0;class#Ship#0" expanded="false" />
+            <element signature="method#editShipCoord#0;class#Ship#0" expanded="false" />
+            <element signature="method#isDestroyed#0;class#Ship#0" expanded="false" />
+            <element signature="method#tableGeneratorH#0;class#Ship#0" expanded="false" />
+            <element signature="method#tableGeneratorV#0;class#Ship#0" expanded="false" />
+            <element signature="method#printCoordBateau#0;class#Ship#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="31" column="55" lean-forward="false" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
+        <state relative-caret-position="-333">
+          <caret line="37" column="39" lean-forward="false" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#shipLengthControl#0;class#Player#0" expanded="false" />
+            <element signature="method#matrixPositionControl#0;class#Player#0" expanded="false" />
+            <element signature="method#convertCoord#0;class#Player#0" expanded="false" />
+            <element signature="method#getX#0;class#Player#0" expanded="false" />
+            <element signature="method#getY#0;class#Player#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestShip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="14" lean-forward="false" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Grille.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
