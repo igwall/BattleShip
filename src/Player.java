@@ -20,6 +20,7 @@ public class Player {
     private GrilleBateau grilleBateau;
     private GrilleTir grilleTir;
 
+
     public Player(int tok,String name){
         this.name = name;
         this.token = tok;
@@ -36,6 +37,10 @@ public class Player {
         this.army[current] = shipMaker();
         current ++;
         this.army[current] = shipMaker();
+
+        this.grilleBateau = new GrilleBateau();
+        this.grilleTir = new GrilleTir();
+
     }
 
     // Faire la matrice qui va accueillir les bateaux
@@ -44,24 +49,25 @@ public class Player {
 
     public Ship shipMaker(){
 
+        Coordonnee startCoord;
+        Coordonnee endCoord;
         boolean coordValide = false;
-        String startCoord = "";
-        String endCoord = "";
-
 
         while(!coordValide){
 
             //On demande les coordonnées des joueurs
             Scanner cs = new Scanner(System.in);
             System.out.println("Veuillez saisir une première coordonnée: ");
-            startCoord = cs.next();
+            String coord = cs.next();
+            startCoord = new Coordonnee(coord);
 
             Scanner cs1 = new Scanner(System.in);
             System.out.println("Veuillez saisir une seconde coordonnée: ");
-            endCoord = cs1.next();
+            String coord2 = cs.next();
+            endCoord = new Coordonnee(coord2);
 
-            //On vérifie que les coordonnées sont des coordonnées qui ne sont pas utilisées
-            coordValide = coordControl(startCoord,endCoord);
+            Position position = new Position(startCoord, endCoord);
+            coordValide = grilleBateau.positionValide(position);
         }
 
         return new Ship(startCoord, endCoord);
@@ -85,42 +91,6 @@ public class Player {
         boolean vertical;
 
 
-        //Si les chiffres sont identiques et que les lettres sont différentes (horizontal)
-        if (startX != endX && startY == endY) {
-            vertical = false;
-            if (startX > endX) {
-                lenghtControl = shipLengthControl(startX,endX);
-                positionValide = matrixPositionControl(startY, endY, endX, startX, vertical);
-
-            } else if (endX > startX) {
-                lenghtControl = shipLengthControl(endX, startX);
-                positionValide = matrixPositionControl(startY, endY, startX, endX, vertical);
-            } else {
-                coordValide = false;
-            }
-            coordValide = (lenghtControl && positionValide);
-        }
-
-
-        //Si les chiffres sont dfférents et que les lettres sont identiques (vertical)
-        else if (startY != endY && startX == endX) {
-            vertical = true;
-            if (startY > endY) {
-                lenghtControl = shipLengthControl(endX, startX);
-                positionValide = matrixPositionControl(endY, startY, startX, endX, vertical);
-            } else if (endY > startY) {
-                lenghtControl = shipLengthControl(endX, startX);
-                positionValide = matrixPositionControl(startY, endY, startX, endX, vertical);
-            } else {
-                coordValide = false;
-            }
-
-        }
-        else { coordValide = false; }
-        coordValide = (lenghtControl && positionValide);
-        return coordValide;
-
-    }
 
 
     private boolean shipLengthControl(int coord1, int coord2){
@@ -162,32 +132,6 @@ public class Player {
 
 
     }
-
-    private int convertCoord(char coord){
-        // Car valeur de A = 10 et on l'indice à 0
-        int coordConverted = Character.getNumericValue(coord) - 10;
-        return coordConverted;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     private int getX(String coord){
         StringBuilder x = new StringBuilder(coord);

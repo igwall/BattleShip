@@ -1,17 +1,21 @@
 public class GrilleBateau extends Grille {
-    private int[] grille[];
 
-    public GrilleBateau(){
-        for(int x = 0; x < grille.length; x++){
-            for(int y = 0; y < grille[x].length; y++){
-                grille[x][y] = 0;
-            }
+    public boolean positionValide(Position position){
+        boolean valide = true;
+        int i =0;
+        while(i < position.getLength() && valide){
+            valide = getOccupeCoord(position.getCoordonnee(i));
+            i++;
         }
+        return valide;
     }
 
-    public boolean getOccupe(int x, int y){
+
+    public boolean getOccupeCoord(Coordonnee coord){
         boolean occupe;
-        if (this.grille[x][y] == 1){
+        int x = coordConverter(coord.getX());
+        int y = coord.getY();
+        if (grille[x][y] == 1){
             occupe = true;
         }
         else{
@@ -19,5 +23,18 @@ public class GrilleBateau extends Grille {
         }
         return occupe;
     }
+
+
+    public void updateGrille(Position position){
+        boolean valide = true;
+        for(int i = 0; i < position.getLength() ; i++){
+            Coordonnee coord = position.getCoordonnee(i);
+            int x = coordConverter(coord.getX());
+            int y = coord.getY();
+            this.grille[x][y] = 1;
+        }
+    }
+
+
 
 }
