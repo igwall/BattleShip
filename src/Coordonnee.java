@@ -37,11 +37,14 @@ public class Coordonnee {
         return x;
     }
 
+
+
+
     public void setHit(){
         this.coord = "X";
     }
 
-    public boolean isEdited(){
+    public boolean isHit(){
         boolean hit;
         if (this.coord == "X"){
             hit = true;

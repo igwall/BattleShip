@@ -51,5 +51,16 @@ public class Grille {
 
     }
 
+    public boolean coordControl(Coordonnee coord){
+        boolean coordValide;
+        if(coordConverter(coord.getX()) > this.size || coord.getY() > this.size ){
+            coordValide = false;
+        }
+        else{
+            coordValide = true;
+        }
+        return coordValide;
+    }
+
 
 }

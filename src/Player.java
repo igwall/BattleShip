@@ -47,119 +47,88 @@ public class Player {
     // Faire une fonction qui calcule le bateau demandé
     //Vérifier les coordonnées ici !
 
-    public Ship shipMaker(){
+    public Ship shipMaker() {
+        boolean positionValide;
+        boolean lengthValide;
+        boolean allValide = false;
 
-        Coordonnee startCoord;
-        Coordonnee endCoord;
-        boolean coordValide = false;
+        //On demande les coordonnées des joueurs
+        Scanner cs = new Scanner(System.in);
+        System.out.println("Veuillez saisir une première coordonnée: ");
+        String coord1 = cs.next();
+        Coordonnee startCoord = new Coordonnee(coord1);
 
-        while(!coordValide){
+        Scanner cs1 = new Scanner(System.in);
+        System.out.println("Veuillez saisir une seconde coordonnée: ");
+        String coord2 = cs.next();
+        Coordonnee endCoord = new Coordonnee(coord2);
 
-            //On demande les coordonnées des joueurs
-            Scanner cs = new Scanner(System.in);
-            System.out.println("Veuillez saisir une première coordonnée: ");
-            String coord = cs.next();
-            startCoord = new Coordonnee(coord);
+        boolean coordControl = this.grilleBateau.coordControl(startCoord);
+        boolean coordControl2 = this.grilleBateau.coordControl(startCoord);
 
-            Scanner cs1 = new Scanner(System.in);
-            System.out.println("Veuillez saisir une seconde coordonnée: ");
-            String coord2 = cs.next();
-            endCoord = new Coordonnee(coord2);
-
-            Position position = new Position(startCoord, endCoord);
-            coordValide = grilleBateau.positionValide(position);
+        while(!allValide) {
+            //Si une des coordonnées n'est pas valide
+            if (!coordControl || !coordControl2) {
+                allValide = false;
+                System.out.println("Coordonnées invalides, veuillez ressaisir des coordonnées valides\n");
+            } else {
+                Position position = new Position(startCoord, endCoord);
+                positionValide = grilleBateau.positionValide(position);
+                lengthValide = shipLengthControl(position.getLength());
+                if (positionValide && lengthValide) {
+                    allValide = true;
+                    System.out.println("Coordonnées valides");
+                } else {
+                    allValide = false;
+                    System.out.println("Coordonnées invalides, veuillez ressaisir des coordonnées valides\n");
+                }
+            }
         }
-
         return new Ship(startCoord, endCoord);
+
     }
 
 
-    // Coord controle va vérifier avant de lancer la construction d'un bateau
-    private boolean coordControl(String startCoord, String endCoord) {
-
-        // L'ensemble des coordonnées sont enregistrées de la forme "Lettre + Chiffre : B3, F3, etc..."
-        int lenght = 0;
-        // On décompose les coordonnées
-        int startX = getX(startCoord);
-        char startY = getY(startCoord);
-        int endX = getX(endCoord);
-        char endY = getY(endCoord);
-        String[] tab;
-        boolean lenghtControl = false;
-        boolean coordValide = false;
-        boolean positionValide = false;
-        boolean vertical;
-
-
-
-
-    private boolean shipLengthControl(int coord1, int coord2){
-        int length = coord1 - coord2;
-        boolean coordValide;
+    private boolean shipLengthControl(int length){
+        boolean lengthValide;
         //Si aucun bateau de taille length n'est possible à poser
-        if (length > 5 || length == 1){ coordValide = false; }
-        else if(this.capicity[length] == 0){coordValide = false;}
-        else {coordValide = true;}
-        return coordValide;
+        if (length > 5 || length == 1){ lengthValide = false; }
+        else if(this.capicity[length] == 0){lengthValide = false;}
+        else {lengthValide = true;}
+        return lengthValide;
     }
 
-    private boolean matrixPositionControl(char startX, char endX, int startY, int endY, boolean vertical){
-        boolean coordValide = true;
-        if (vertical){
-            int convertX = convertCoord(startX);
-            while(startY < endY && coordValide ){
-                if(this.grilleBateau.getOccupe(convertX, startY)){
-                    startY++;
-                }
-                else{
-                    coordValide = false;
-                }
-            }
-        }
-        else{
-            int startXConvert = convertCoord(startX);
-            int endXConvert = convertCoord(endX);
-            while(startXConvert < endXConvert && coordValide ){
-                if(this.grilleBateau.getOccupe(startXConvert, startY)){
-                    startXConvert++;
-                }
-                else{
-                    coordValide = false;
-                }
-            }
-        }
-        return coordValide;
 
-
-    }
-
-    private int getX(String coord){
-        StringBuilder x = new StringBuilder(coord);
-        String newCoord ="";
-        for(int i = 0 ; i< coord.length(); i++){
-            if (isLetter(coord.charAt(i))){
-                x.deleteCharAt(i); //On retire la lettre de la coordonée
-                newCoord = x.toString();
-            }
-        }
-        int resultat = Integer.parseInt(newCoord);
-        return resultat;
-    }
-
-    // Fonction de récupération de la lettre de la coordonnée
-    private char getY(String coord){
-        //Par défaut, la valeur sera A.
-        char Y ='A';
-        for(int i = 0 ; i< coord.length(); i++){
-            if (isLetter(coord.charAt(i))){
-                Y = coord.charAt(i);
-            }
-        }
-        return Y;
-    }
 
 
     //Cette fonction permet de vérifier que les coordonnées entrées ne sont pas déjà utilisées par un bateau
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

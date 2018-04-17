@@ -95,8 +95,8 @@ public class Position {
         boolean allHit = true;
         int i = 0;
         while(i < emplacement.length && allHit){
-            if(emplacement[i].getValue() != "X"){
-                allHit = false;
+            if(emplacement[i].isHit()){
+                allHit = true;
             }
             else{
                 allHit = false;
