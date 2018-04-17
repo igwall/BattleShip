@@ -38,8 +38,6 @@ public class Coordonnee {
     }
 
 
-
-
     public void setHit(){
         this.coord = "X";
     }

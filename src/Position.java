@@ -24,7 +24,7 @@ public class Position {
 
         }
 
-        //Si les chiffres sont dfferents et que les lettres sont identiques (vertical)
+        //Si les chiffres sont differents et que les lettres sont identiques (vertical)
         else if (startY != endY && startX == endX) {
             this.vertical = true;
             if (startY > endY) {
@@ -42,23 +42,26 @@ public class Position {
 
 
     private Coordonnee[] tableGeneratorH(char x1, char x2, int y){
+        System.out.println("Entrée tableau H");
         int j=0;
         int length = (int) x1 - (int) x2 +1 ;
         this.length = length;
-        int k = y;
         Coordonnee[] tab = new Coordonnee[length];
 
         // ON genère le tableau de coordonnees horizontales
         for(int i= 0; i<tab.length; i++){
             String coord = x2 + Integer.toString(y);
             tab[i] = new Coordonnee(coord);
-            k++;
+            System.out.println(tab[i].getValue());
+            x2++;
         }
+
         return tab;
     }
 
 
     private Coordonnee[] tableGeneratorV(int y1, int y2, char x){
+        System.out.println("Entrée tableau V");
         int j=0;
         int length = y1 - y2 +1 ;
         this.length = length;
@@ -66,6 +69,9 @@ public class Position {
         Coordonnee[] tab = new Coordonnee[length];
         for(int i= 0; i<tab.length; i++){
             String valeur = x+Integer.toString(k);
+            System.out.println(valeur);
+            Coordonnee coord = new Coordonnee(valeur);
+            tab[i] = coord;
             k++;
         }
         return tab;
@@ -77,17 +83,31 @@ public class Position {
 
 
     public boolean isIn(Coordonnee coord){
+        System.out.println("Entrée dans le isIn de Position");
         boolean in = false;
         int i = 0;
-        while( i<emplacement.length && !in){
-            if(coord.getValue() == emplacement[i].getValue()){
+        while(i<emplacement.length && !in){
+            System.out.println("Scan du bateau: "+Integer.toString(i));
+            System.out.println("Coord tir: "+coord.getValue()+"  Coord bateau: "+ emplacement[i].getValue());
+            if(coord.getValue().equals(emplacement[i].getValue())){
                 emplacement[i].setHit();
+                System.out.println(emplacement[i].getValue());
                 in = true;
+                System.out.println("Touché");
+
             }
             else{
                 in = false;
+                i++;
             }
+
         }
+        if(in){
+            System.out.println("Le bateau est touché");
+        }else{
+            System.out.println("Le bateau n'est pas touché");
+        }
+        System.out.println("Sortie du isIn de position");
         return in;
     }
 
@@ -101,12 +121,22 @@ public class Position {
             else{
                 allHit = false;
             }
+            i++;
         }
         return allHit;
     }
 
     public int getLength(){
         return this.length;
+    }
+
+    public String printCoord(){
+        String tableau = "[";
+        for(int i=0; i<emplacement.length; i++){
+            tableau += emplacement[i].getValue()+",";
+        }
+        tableau+= "]";
+        return tableau;
     }
 
 

@@ -6,7 +6,7 @@ public class Ship {
     //Declaration des variables de la classe:
     private Coordonnee startCoord, endCoord;
     private Position position;
-    private boolean destroyed;
+    private boolean destroyed = false;
 
 
     public Ship(Coordonnee startCoord, Coordonnee endCoord){ // Constructeur d'un bateau
@@ -24,12 +24,6 @@ public class Ship {
             if (destroyed){
                 this.destroyed = true;
             }
-            else{
-                this.destroyed = false;
-            }
-        }
-        else{
-            hit = false;
         }
         return hit;
     }
@@ -37,6 +31,10 @@ public class Ship {
     // Zone des getters et des setters :
     public int getLength(){
         return this.position.getLength();
+    }
+
+    public boolean isDestroyed(){
+        return this.destroyed;
     }
 
 }
