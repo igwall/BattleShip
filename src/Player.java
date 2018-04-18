@@ -140,12 +140,6 @@ public class Player {
         return name;
     }
 
-    public void displayShip(){
-        grilleBateau.affichageGrilleBateau();
-    }
-
-    public void displayTir(){grilleTir.affichageGrilleTir();}
-
     public void setScore(int score) {
         this.score = score;
     }
