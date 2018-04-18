@@ -13,12 +13,11 @@
 
 ***
 ### La classe Duo :
->
-    |Securité | Attribut      | Type       |
-    |:-------:| ------------- |:----------:|
-    | private | joueur1       | Human      | 
-    | private | joueur2       | Human      |
-    | private | nbShip        | int        |
+|Securité | Attribut      | Type       |
+|:-------:| ------------- |:----------:|
+| private | joueur1       | Human      | 
+| private | joueur2       | Human      |
+| private | nbShip        | int        |
     
 
 #### public Duo(String namePlayer1, String namePlayer2)
@@ -164,31 +163,31 @@ Les coordonnées correspondent à un tableau de coordonée. Une coordonnée corr
 ***
  ### La classe Position :
 
-    |Securité | Attribut      | Type          |
-    |:-------:| ------------- |:-------------:|
-    | private | emplacement   | Coordonnee[]  | 
-    | private | vertical      | boolean       |
-    | private | length        | int           |
+|Securité | Attribut      | Type          |
+|:-------:| ------------- |:-------------:|
+| private | emplacement   | Coordonnee[]  | 
+| private | vertical      | boolean       |
+| private | length        | int           |
 
 
-     #### public Position(Coordonnee startCoord, Coordonnee endCoord)
-     > Constructeur de l'objet Position. Il prends en considération deux coordonnées pour générer l'ensemble des autres coordonnées. 
-     ex : B1 -> B4 = B1, B2, B3, B4
+ #### public Position(Coordonnee startCoord, Coordonnee endCoord)
+ > Constructeur de l'objet Position. Il prends en considération deux coordonnées pour générer l'ensemble des autres coordonnées. 
+ ex : B1 -> B4 = B1, B2, B3, B4
 
-    #### private Coordonnee[] tableGeneratorH(char x1, char x2, int y)
-    > Génère un tableau dont les coordonnées sont Horizontales
+#### private Coordonnee[] tableGeneratorH(char x1, char x2, int y)
+> Génère un tableau dont les coordonnées sont Horizontales
 
-    #### private Coordonnee[] tableGeneratorV(int y1, int y2, char x)
-    > Génère un tableau dont les coordonnées sont Verticales
+#### private Coordonnee[] tableGeneratorV(int y1, int y2, char x)
+> Génère un tableau dont les coordonnées sont Verticales
 
-    #### public boolean isIn(Coordonnee coord)
-    > Vérifie si la coordonnée entrée en paramètre est présent dans l'ensemble des coordonnées de position. 
+#### public boolean isIn(Coordonnee coord)
+> Vérifie si la coordonnée entrée en paramètre est présent dans l'ensemble des coordonnées de position. 
 
-    #### public boolean allHit()
-    > Si toute les coordonnées dans Position sont touchées (Coordonnée remplacée par "X") renvoie True, sinon, renvoi False.
+#### public boolean allHit()
+> Si toute les coordonnées dans Position sont touchées (Coordonnée remplacée par "X") renvoie True, sinon, renvoi False.
 
-    #### public int getLength()
-    > Renvoi la longeur de la Position (nombre de coordonnées)
+#### public int getLength()
+> Renvoi la longeur de la Position (nombre de coordonnées)
 
 
 
@@ -203,17 +202,17 @@ Les coordonnées correspondent à un tableau de coordonée. Une coordonnée corr
 ### La classe GrilleTir :
 > Classe enfant de la classe Grille.
 
-    #### public GrilleTir()
-    > Créer une matrice de 10 x 10 cases
+#### public GrilleTir()
+> Créer une matrice de 10 x 10 cases
 
-    #### public void affichageGrilleTir()
-    > Affiche la grille qui sauvegarde les tirs effectués
+#### public void affichageGrilleTir()
+> Affiche la grille qui sauvegarde les tirs effectués
 
-    #### public void addHit(Coordonnee coord)
-    > Rajoute la coordonnée entrée en paramètre comme étant touchée dans la grille du joueur. 
+#### public void addHit(Coordonnee coord)
+> Rajoute la coordonnée entrée en paramètre comme étant touchée dans la grille du joueur. 
 
-    #### public void miss(Coordonnee coord)
-    > Rajoute la coordonnée entrée en paramètre comme étant ratée dans la grille du joueur. 
+#### public void miss(Coordonnee coord)
+> Rajoute la coordonnée entrée en paramètre comme étant ratée dans la grille du joueur. 
 
 
 
@@ -229,23 +228,23 @@ Les coordonnées correspondent à un tableau de coordonée. Une coordonnée corr
 ### La classe GrilleBateau :
 > Classe enfant de la classe Grille.
 
-    #### public GrilleBateau()
-    > Créer une matrice de 10 x 10 cases
+#### public GrilleBateau()
+> Créer une matrice de 10 x 10 cases
 
-    #### public boolean positionValide(Position position)
-    > Vérifie que l'ensemble des coordonnée de la position entrée en paramètre est disponible. Si un des bateaux à déjà "marqué sa position" sur la matrice, elle renvoi faux, sinon, elle renvoi true. Permet d'éviter les chevauchements de bateau
+#### public boolean positionValide(Position position)
+> Vérifie que l'ensemble des coordonnée de la position entrée en paramètre est disponible. Si un des bateaux à déjà "marqué sa position" sur la matrice, elle renvoi faux, sinon, elle renvoi true. Permet d'éviter les chevauchements de bateau
 
-    #### public boolean getOccupeCoord(Coordonnee coord)
-    > Vérifie si la coordonnée entrée en paramètre est bien dans la matrice (pas de dépassement).
+#### public boolean getOccupeCoord(Coordonnee coord)
+> Vérifie si la coordonnée entrée en paramètre est bien dans la matrice (pas de dépassement).
 
-    #### public void updateGrille(Position position)
-    > Bloque l'ensemble des Coordonnées de position afin qu'elles ne soient plus utilisée par un autre bateau.
+#### public void updateGrille(Position position)
+> Bloque l'ensemble des Coordonnées de position afin qu'elles ne soient plus utilisée par un autre bateau.
 
-    #### public void updatePrintHit(Coordonnee coord)
-    > Si le joueur adverse tire sur le bateau, la coordonnée du bateau touché est marqué afin d'afficher un "X".
+#### public void updatePrintHit(Coordonnee coord)
+> Si le joueur adverse tire sur le bateau, la coordonnée du bateau touché est marqué afin d'afficher un "X".
 
-    #### public void affichageGrilleBateau()
-    > Affiche la grille et la position des différents bateaux/
+#### public void affichageGrilleBateau()
+> Affiche la grille et la position des différents bateaux/
 
 
 
@@ -258,24 +257,24 @@ Les coordonnées correspondent à un tableau de coordonée. Une coordonnée corr
 ### La classe Grille:
 > Classe parente des grilles GrilleBateau et Grille Tir. Les deux grilles ont les mêmes paramètres, seul leur traitement diffère. 
 
-    |Securité           | Attribut      | Type          |
-    |:-------:          | ------------- |:-------------:|
-    | protected static  | size          | int           | 
-    | protected         | grille[]      | int[]         |
+|Securité           | Attribut      | Type          |
+|:-------:          | ------------- |:-------------:|
+| protected static  | size          | int           | 
+| protected         | grille[]      | int[]         |
 
 
 
-    #### public Grille()
-    > Constructeur par défaut d'une grille. Il créé une matrice de 10 x 10
+#### public Grille()
+> Constructeur par défaut d'une grille. Il créé une matrice de 10 x 10
 
-    #### public Grille(int size)
-    > Constructeur spécifique si l'on souhaite modifier la taille du plateau de jeu
+#### public Grille(int size)
+> Constructeur spécifique si l'on souhaite modifier la taille du plateau de jeu
 
-    #### protected int coordConverter(char x)
-    > Récupère La valeur X de la coordonnée pour pouvoir la traitée sur la matrice.
+#### protected int coordConverter(char x)
+> Récupère La valeur X de la coordonnée pour pouvoir la traitée sur la matrice.
 
-    #### public boolean coordControl(Coordonnee coord)
-    > Vérifie que la coordonnée entrée est dans la matrice. 
+#### public boolean coordControl(Coordonnee coord)
+> Vérifie que la coordonnée entrée est dans la matrice. 
 
 
 
