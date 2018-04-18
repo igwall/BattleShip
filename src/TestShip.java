@@ -10,7 +10,6 @@ public class TestShip {
         Coordonnee coord = joueur1.getTir();
         Coordonnee coord2 = joueur1.getTir();
         Position position = new Position (coord, coord2);
-        for()
         joueur1.displayInfos();
 
         //Au tour du joueur 2

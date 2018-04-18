@@ -81,12 +81,17 @@ public class Player {
                 hit =true;
                 grilleBateau.updatePrintHit(coord);
             }
-            else{
-                hit = false;
-            }
         }
         return hit;
     }
+
+
+
+
+
+
+
+
 
 
     private boolean shipLengthControl(int length){
