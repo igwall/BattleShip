@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Player {
     // Tableau des unités du joueur (1 bateau de taille 2, 2 bateaux de taille 3, etc...
-    protected int capicity[] = {0,0,1,2,1,1};
+    protected int capacity[] = {0,0,1,2,1,1,0,0,0,0,0};
 
     protected int score = 0; // Nombre de bateau détruit par le joueur
 
@@ -24,7 +24,7 @@ public class Player {
 
 
     public void shipGenerator(int current) {
-        System.out.println("Construction du bateau "+Integer.toString(current+1));
+        System.out.println("Construction du bateau "+Integer.toString(current));
         boolean positionValide;
         boolean lengthValide;
         boolean allValide = false;
@@ -44,13 +44,13 @@ public class Player {
             String coord2 = cs.next();
             endCoord = new Coordonnee(coord2);
 
-            boolean coordControl = this.grilleBateau.coordControl(startCoord);
-            boolean coordControl2 = this.grilleBateau.coordControl(startCoord);
+            boolean coordControl = grilleBateau.coordControl(startCoord);
+            boolean coordControl2 = grilleBateau.coordControl(startCoord);
 
             //Si une des coordonnées n'est pas valide
             if (!coordControl || !coordControl2) {
                 allValide = false;
-                System.out.println("Valeur des coordonnée invalide\n");
+                System.out.println("La valeur indiquée dépasse la grille\n");
             } else {
                 System.out.println("Coordonnée valides");
                 Position position = new Position(startCoord, endCoord);
@@ -60,6 +60,7 @@ public class Player {
                     allValide = true;
                     System.out.println("Positionne est valide");
                     this.grilleBateau.updateGrille(position);
+                    this.capacity[position.getLength()] -=1;
                 } else {
                     allValide = false;
                     System.out.println("Position invalide\n");
@@ -72,18 +73,17 @@ public class Player {
 
     public boolean isHit(Coordonnee coord){
         System.out.println("Entrée dans le isHit de joueur");
-        int i = 0;
         boolean hit = false;
         for(Ship s:army){
             boolean shipHit;
             shipHit = s.isHit(coord);
             if(shipHit){
                 hit =true;
+                grilleBateau.updatePrintHit(coord);
             }
             else{
                 hit = false;
             }
-            i++;
         }
         return hit;
     }
@@ -92,8 +92,9 @@ public class Player {
     private boolean shipLengthControl(int length){
         boolean lengthValide;
         //Si aucun bateau de taille length n'est possible à poser
-        if (length > 5 || length == 1){ lengthValide = false; }
-        else if(this.capicity[length] == 0){lengthValide = false;}
+        if (this.capacity[length] == 0){
+            lengthValide = false;
+        }
         else {lengthValide = true;}
         return lengthValide;
     }
@@ -123,7 +124,7 @@ public class Player {
     }
 
     public void addHit(Coordonnee coord){
-        grilleTir.hit(coord);
+        grilleTir.addHit(coord);
     }
 
     public void addMiss(Coordonnee coord){
@@ -134,6 +135,15 @@ public class Player {
         return name;
     }
 
+    public void displayShip(){
+        grilleBateau.affichageGrilleBateau();
+    }
+
+    public void displayTir(){grilleTir.affichageGrilleTir();}
+
+    public void setScore(int score) {
+        this.score = score;
+    }
 }
 
 

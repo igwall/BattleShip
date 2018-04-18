@@ -5,7 +5,7 @@ public class Launcher {
     //Demander la taille de la grille !!!
     //Garder le score de tout les joueurs !
     //Ca peut être coolos
-    public void main(){
+    public static void main(String[] args){
         System.out.println("Welcome on this edition on Battleship\n"+
                         "-- made by Lucas Gonçalves\n"+"==== ==== ==== ==== ==== ====\n\n"+
                         "Two playing mods are available : \n" +
@@ -33,7 +33,9 @@ public class Launcher {
             String name= scan.next();
             Solo game = new Solo(name);
             game.newGame();
-
+        }
+        else{
+            System.out.println("Life is hard... Please made the good choice...");
         }
     }
 

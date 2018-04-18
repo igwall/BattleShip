@@ -20,6 +20,7 @@ public class Ship {
     public boolean isHit(Coordonnee coord) {
         boolean hit = position.isIn(coord);
         if(hit){
+            System.out.println(position.printCoord());
             destroyed = position.allHit();
             if (destroyed){
                 this.destroyed = true;

@@ -4,21 +4,29 @@ import java.util.Scanner;
 
 public class TestShip {
     public static void main(String[] args){
-        GrilleBateau grilleBoat = new GrilleBateau();
-        Coordonnee coord1 = new Coordonnee("B3");
-        Coordonnee coord2 = new Coordonnee("B8");
-        Position pos = new Position(coord1,coord2);
+        Human joueur1 = new Human("Bill");
+        Human joueur2 = new Human("Clone");
 
-        Coordonnee coord3 = new Coordonnee("D2");
-        Coordonnee coord4 = new Coordonnee("H2");
-        Position pos2 = new Position(coord3,coord4);
+        Coordonnee coord = joueur1.getTir();
+        Coordonnee coord2 = joueur1.getTir();
+        Position position = new Position (coord, coord2);
+        for()
+        joueur1.displayInfos();
 
-        grilleBoat.updateGrille(pos);
-        grilleBoat.updateGrille(pos2);
-        grilleBoat.affichageGrilleBateau();
+        //Au tour du joueur 2
 
-        GrilleTir grilleTir = new GrilleTir();
-        grilleTir.affichageGrilleTir();
+        System.out.println("C'est au tour de "+joueur2.getName());
+        joueur2.displayInfos();
+        System.out.println("Entrez votre shot :");
+        Coordonnee shot2 = joueur2.getTir();
+        if(joueur1.isHit(shot2)){
+            System.out.println("Cible touchée");
+            joueur2.addHit(shot2);
 
+
+        }else{
+            joueur2.addMiss(shot2);
+        }
+        joueur2.displayTir();
     }
 }

@@ -87,14 +87,10 @@ public class Position {
         boolean in = false;
         int i = 0;
         while(i<emplacement.length && !in){
-            System.out.println("Scan du bateau: "+Integer.toString(i));
-            System.out.println("Coord tir: "+coord.getValue()+"  Coord bateau: "+ emplacement[i].getValue());
             if(coord.getValue().equals(emplacement[i].getValue())){
                 emplacement[i].setHit();
-                System.out.println(emplacement[i].getValue());
                 in = true;
                 System.out.println("Touché");
-
             }
             else{
                 in = false;

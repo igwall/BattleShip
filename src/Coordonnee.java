@@ -8,7 +8,7 @@ public class Coordonnee {
     public Coordonnee(String coord) {
         this.x = calcX(coord);
         this.y = calcY(coord);
-        this.coord = coord;
+        this.coord = x+Integer.toString(y);
     }
 
     private int calcY(String coord) {
@@ -44,7 +44,7 @@ public class Coordonnee {
 
     public boolean isHit(){
         boolean hit;
-        if (this.coord == "X"){
+        if (this.coord.equals("X")){
             hit = true;
         }
         else{

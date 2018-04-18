@@ -11,13 +11,13 @@ public class GrilleBateau extends Grille {
     }
 
     public boolean positionValide(Position position){
-        boolean occupe = false;
+        boolean free = false;
         int i =0;
-        while(i < position.getLength() && !occupe){
-            occupe = getOccupeCoord(position.getCoordonnee(i));
+        while(i < position.getLength() && !free){
+            free = !getOccupeCoord(position.getCoordonnee(i));
             i++;
         }
-        return !occupe;
+        return free;
     }
 
 
@@ -25,7 +25,7 @@ public class GrilleBateau extends Grille {
         boolean occupe;
         int x = coordConverter(coord.getX());
         System.out.println(coordConverter(coord.getX()));
-        int y = coord.getY();
+        int y = coord.getY()-1;
         System.out.println("valeur de grille x, y: "+Integer.toString(grille[x][y]));
         if (grille[x][y] == 1){
             occupe = true;
@@ -42,36 +42,39 @@ public class GrilleBateau extends Grille {
         for(int i = 0; i < position.getLength() ; i++){
             Coordonnee coord = position.getCoordonnee(i);
             int x = coordConverter(coord.getX());
-            int y = coord.getY();
+            int y = coord.getY()-1;
             this.grille[x][y] = 1;
         }
     }
 
+    public void updatePrintHit(Coordonnee coord){
+        int x = coordConverter(coord.getX());
+        int y = coord.getY()-1;
+        this.grille[x][y] = -1;
+    }
+
     public void affichageGrilleBateau() {
         char index = 'A';
-        int number = 1;
+
         System.out.println("Affichage de vos bateaux: ");
         String element = "    " + Character.toString(index);
-        for (int i = 0; i < size; i++) {
+        for (int i = 1; i < size; i++) {
             index++;
             element += "  " + Character.toString(index);
         }
         System.out.println(element);
 
-
-        for (int i = 1; i < grille.length; i++) {
+        int number = 1;
+        for (int i = 0; i < grille.length; i++) {
             String ligne;
             if(number < 10) {ligne = " " + Integer.toString(number) + "  "; }
 
             else{ligne =Integer.toString(number) + "  ";}
 
             for (int j = 0; j < grille[i].length; j++) {
-                if(grille[j][i] == 1){
-                    ligne += "•  ";
-                }
-                else{
-                    ligne += "   ";
-                }
+                if(grille[j][i] == 1){ ligne += "•  "; }
+                else if(grille[j][i] == -1){ ligne += "X  "; }
+                else{ligne+= "   ";}
             }
             System.out.println(ligne);
             number++;
