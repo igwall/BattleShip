@@ -276,7 +276,24 @@ Les coordonnées correspondent à un tableau de coordonée. Une coordonnée corr
 #### public boolean coordControl(Coordonnee coord)
 > Vérifie que la coordonnée entrée est dans la matrice. 
 
+***
 
+## Hiérarchie et génération (schéma) : 
 
-
+    Launcher
+    |
+    -Solo
+    |
+    - Duo -- (1) Human
+        | -- (2) Human -- Score
+                    |  --- Capacity
+                    |  --- Army - Ship
+                    |         | - Ship - Position - Coordonnée[]
+                    |         | - Ship
+                    |         | - Ship
+                    |         | - Ship
+                    |
+                    |  --- Name
+                    |  --- GrilleTir
+                    |  --- GrilleBateau
 
