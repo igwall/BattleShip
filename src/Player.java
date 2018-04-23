@@ -58,7 +58,7 @@ public class Player {
                 lengthValide = shipLengthControl(position.getLength());
                 if (positionValide && lengthValide) {
                     allValide = true;
-                    System.out.println("Positionne est valide");
+                    System.out.println("Position est valide");
                     this.grilleBateau.updateGrille(position);
                     this.capacity[position.getLength()] -=1;
                 } else {
@@ -72,7 +72,6 @@ public class Player {
     }
 
     public boolean isHit(Coordonnee coord){
-        System.out.println("Entrée dans le isHit de joueur");
         boolean hit = false;
         for(Ship s:army){
             boolean shipHit;
@@ -84,14 +83,6 @@ public class Player {
         }
         return hit;
     }
-
-
-
-
-
-
-
-
 
 
     private boolean shipLengthControl(int length){
@@ -122,7 +113,7 @@ public class Player {
     public void displayInfos(){
         System.out.println("Votre score : "+getScore());
         System.out.println("Affichage de la position de vos bateaux : \n\n");
-        this.grilleBateau.affichageGrilleBateau();
+        this.grilleBateau.printOwnShip();
         System.out.println("==== ==== ==== ==== ====\n");
         System.out.println("Affichage des tirs effectués : \n\n");
         this.grilleTir.affichageGrilleTir();
@@ -142,6 +133,10 @@ public class Player {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public void displayShip(){
+        grilleBateau.printOwnShip();
     }
 }
 

@@ -42,7 +42,6 @@ public class Position {
 
 
     private Coordonnee[] tableGeneratorH(char x1, char x2, int y) {
-        System.out.println("Entrée tableau H");
         int j = 0;
         int length = (int) x1 - (int) x2 + 1;
         this.length = length;
@@ -52,7 +51,6 @@ public class Position {
         for (int i = 0; i < tab.length; i++) {
             String coord = x2 + Integer.toString(y);
             tab[i] = new Coordonnee(coord);
-            System.out.println(tab[i].getValue());
             x2++;
         }
 
@@ -61,7 +59,6 @@ public class Position {
 
 
     private Coordonnee[] tableGeneratorV(int y1, int y2, char x) {
-        System.out.println("Entrée tableau V");
         int j = 0;
         int length = y1 - y2 + 1;
         this.length = length;
@@ -69,7 +66,6 @@ public class Position {
         Coordonnee[] tab = new Coordonnee[length];
         for (int i = 0; i < tab.length; i++) {
             String valeur = x + Integer.toString(k);
-            System.out.println(valeur);
             Coordonnee coord = new Coordonnee(valeur);
             tab[i] = coord;
             k++;
@@ -78,14 +74,12 @@ public class Position {
     }
 
     public boolean isIn(Coordonnee coord) {
-        System.out.println("Entrée dans le isIn de Position");
         boolean in = false;
         int i = 0;
         while (i < emplacement.length && !in) {
             if (coord.getValue().equals(emplacement[i].getValue())) {
                 emplacement[i].setHit();
                 in = true;
-                System.out.println("Touché");
             } else {
                 in = false;
                 i++;
@@ -97,7 +91,6 @@ public class Position {
         } else {
             System.out.println("Le bateau n'est pas touché");
         }
-        System.out.println("Sortie du isIn de position");
         return in;
     }
 
@@ -115,8 +108,20 @@ public class Position {
         return allHit;
     }
 
+    public Coordonnee getCoordonnee(int x){
+        return emplacement[x];
+    }
+
     public int getLength() {
         return this.length;
+    }
+
+    public String printCoord(){
+         String affichage ="";
+        for (Coordonnee c : emplacement){
+            affichage += c.getValue();
+        }
+        return affichage;
     }
 
 }

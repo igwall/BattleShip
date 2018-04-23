@@ -34,15 +34,9 @@ public class Grille {
     public boolean coordControl(Coordonnee coord){
         boolean coordValide;
         if(coordConverter(coord.getX()) > this.size || coord.getY() > this.size || coord.getY()< 0 || coordConverter(coord.getX()) <0 ){
-            System.out.println("Taille de la grille: "+this.size);
-            System.out.println("Value Y: "+coord.getY());
-            System.out.println("Valeur X: "+coordConverter(coord.getX()));
             coordValide = false;
         }
         else{
-            System.out.println("Taille de la grille: "+this.size);
-            System.out.println("Value Y: "+coord.getY());
-            System.out.println("Valeur X: "+coordConverter(coord.getX()));
             coordValide = true;
         }
         return coordValide;

@@ -27,7 +27,7 @@ public class Coordonnee {
     // Fonction de recuperation de la lettre de la coordonnee
     private char calcX(String coord) {
         //Par defaut, la valeur sera A.
-        char x = 'A'; //Valeur par defaut obligatoire...
+        char x ='A'; //Valeur par defaut obligatoire...
         for (int i = 0; i < coord.length(); i++) {
             if (isLetter(coord.charAt(i))) {
                 x = coord.charAt(i);

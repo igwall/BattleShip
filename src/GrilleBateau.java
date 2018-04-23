@@ -53,7 +53,7 @@ public class GrilleBateau extends Grille {
         this.grille[x][y] = -1;
     }
 
-    public void affichageGrilleBateau() {
+    public void printOwnShip() {
         char index = 'A';
 
         System.out.println("Affichage de vos bateaux: ");

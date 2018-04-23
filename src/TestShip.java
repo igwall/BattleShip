@@ -26,6 +26,6 @@ public class TestShip {
         }else{
             joueur2.addMiss(shot2);
         }
-        joueur2.displayTir();
+        joueur2.displayInfos();
     }
 }
