@@ -3,7 +3,9 @@ public class Position {
     private boolean vertical;
     private int length;
 
-    public Position(Coordonnee startCoord, Coordonnee endCoord) {
+    public Position(String coord1, String coord2) {
+        Coordonnee startCoord = new Coordonnee(coord1);
+        Coordonnee endCoord = new Coordonnee(coord2);
         int lenght = 0;
         // On decompose les coordonnees
         char startX = startCoord.getX();

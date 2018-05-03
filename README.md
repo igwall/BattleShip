@@ -1,4 +1,4 @@
-# Battleship - Java
+# Battleship - Java (1.0.1)
 
 ## Introduction
 

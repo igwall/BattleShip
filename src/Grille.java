@@ -1,4 +1,4 @@
-public class Grille {
+public abstract class Grille {
     protected static int size;
     protected int[] grille[];
 

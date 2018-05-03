@@ -4,14 +4,11 @@ import static java.lang.Character.isLetter;
 public class Ship {
 
     //Declaration des variables de la classe:
-    private Coordonnee startCoord, endCoord;
     private Position position;
     private boolean destroyed = false;
 
 
-    public Ship(Coordonnee startCoord, Coordonnee endCoord){ // Constructeur d'un bateau
-        this.startCoord = startCoord;
-        this.endCoord = endCoord;
+    public Ship(String startCoord, String endCoord){ // Constructeur d'un bateau
         position = new Position(startCoord, endCoord);
         destroyed = false;
     }
