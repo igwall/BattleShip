@@ -2,11 +2,8 @@ import static java.lang.Character.isLetter;
 
 // Le bateau possède une coordonnee X (Lettre + Chiffre)  && une coordonnee Y (Lettre + Chiffre)
 public class Ship {
-
-    //Declaration des variables de la classe:
     private Position position;
     private boolean destroyed = false;
-
 
     public Ship(String startCoord, String endCoord){ // Constructeur d'un bateau
         position = new Position(startCoord, endCoord);
@@ -14,21 +11,20 @@ public class Ship {
     }
 
     // Verifie si le bateau est touche ou pas
-    public boolean isHit(Coordonnee coord) {
-        boolean hit = position.isIn(coord);
-        if(hit){
-            System.out.println(position.printCoord());
-            destroyed = position.allHit();
-            if (destroyed){
-                this.destroyed = true;
-            }
-        }
-        return hit;
+    public boolean isUsed(Coordonnee value) {
+        return position.isUsed(value);
     }
 
-    // Zone des getters et des setters :
-    public int getLength(){
-        return this.position.getLength();
+    public boolean isHit(String value){
+        return position.isHit(value);
+    }
+
+    public void editHit(String shot){
+        position.editHit(shot);
+        boolean allHit = position.allHit();
+        if(allHit){
+            this.destroyed = true;
+        }
     }
 
     public boolean isDestroyed(){

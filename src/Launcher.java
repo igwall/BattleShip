@@ -17,16 +17,29 @@ public class Launcher {
         char letter = choice.charAt(0);
         letter = Character.toUpperCase(letter);
         if(letter == 'D'){
-            System.out.println("Player one, please type your name: ");
-            Scanner scan = new Scanner(System.in);
-            String name1= scan.next();
+            System.out.println("Would you like to play with traditionnal rules ?");
+            Scanner scanRules = new Scanner(System.in);
+            String answer = scanRules.next();
+            char letter2 = answer.charAt(0);
+            if(letter2 == 'Y'){
+               Rules rules = new Rules();
+                System.out.println("Player one, please type your name: ");
+                Scanner scan = new Scanner(System.in);
+                String name1= scan.next();
 
-            System.out.println("Player two, please type your name: ");
-            Scanner scan2 = new Scanner(System.in);
-            String name2= scan2.next();
-            Duo game = new Duo(name1,name2);
-            game.newGame();
+                System.out.println("Player two, please type your name: ");
+                Scanner scan2 = new Scanner(System.in);
+                String name2= scan2.next();
+                Duo game = new Duo(name1,name2, rules);
+                game.newGame();
+            }
+
         }
+
+
+
+
+
         else if( letter == 'S'){
             System.out.println("Player one, please type your name: ");
             Scanner scan = new Scanner(System.in);
@@ -35,7 +48,7 @@ public class Launcher {
             game.newGame();
         }
         else{
-            System.out.println("Life is hard... Please made the good choice...");
+            System.out.println("Life is hard... Please make the good choice...");
         }
     }
 

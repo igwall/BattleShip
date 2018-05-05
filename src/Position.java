@@ -18,10 +18,9 @@ public class Position {
             this.vertical = false;
             if (startX > endX) {
                 this.emplacement = tableGeneratorH(startX, endX, startY);
-            } else if (endX > startX) {
-                this.emplacement = tableGeneratorH(endX, startX, startY);
+
             } else {
-                // SHOW HOW TO RAISE ERRORS
+                this.emplacement = tableGeneratorH(endX, startX, startY);
             }
 
         }
@@ -31,10 +30,8 @@ public class Position {
             this.vertical = true;
             if (startY > endY) {
                 this.emplacement = tableGeneratorV(startY, endY, startX);
-            } else if (endY > startY) {
-                this.emplacement = tableGeneratorV(endY, startY, startX);
             } else {
-                // SHOW HOW TO RAISE ERRORS
+                this.emplacement = tableGeneratorV(endY, startY, startX);
             }
 
         }
@@ -75,32 +72,41 @@ public class Position {
         return tab;
     }
 
-    public boolean isIn(Coordonnee coord) {
+
+    public boolean isUsed(Coordonnee value) {
         boolean in = false;
         int i = 0;
         while (i < emplacement.length && !in) {
-            if (coord.getValue().equals(emplacement[i].getValue())) {
-                emplacement[i].setHit();
+            if (emplacement[i].equals(value)) {
                 in = true;
             } else {
                 in = false;
                 i++;
             }
-
-        }
-        if (in) {
-            System.out.println("Le bateau est touché");
-        } else {
-            System.out.println("Le bateau n'est pas touché");
         }
         return in;
+    }
+
+    public boolean isHit(String value) {
+        boolean hit = false;
+        int i = 0;
+        while (i < emplacement.length && !hit) {
+            if (emplacement[i].equals(value)) {
+                hit = true;
+            } else {
+                hit = false;
+                i++;
+            }
+
+        }
+        return hit;
     }
 
     public boolean allHit() {
         boolean allHit = true;
         int i = 0;
         while (i < emplacement.length && allHit) {
-            if (emplacement[i].isHit()) {
+            if (emplacement[i].getHit()) {
                 allHit = true;
             } else {
                 allHit = false;
@@ -110,20 +116,20 @@ public class Position {
         return allHit;
     }
 
+    public void editHit(String shot){
+        for(Coordonnee c : emplacement){
+            if(c.equals(shot)){
+                c.setHit();
+            }
+        }
+    }
+
     public Coordonnee getCoordonnee(int x){
         return emplacement[x];
     }
 
     public int getLength() {
         return this.length;
-    }
-
-    public String printCoord(){
-         String affichage ="";
-        for (Coordonnee c : emplacement){
-            affichage += c.getValue();
-        }
-        return affichage;
     }
 
 }

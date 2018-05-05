@@ -3,12 +3,15 @@ import static java.lang.Character.isLetter;
 public class Coordonnee {
     private char x;
     private int y;
-    String coord;
+    private boolean hit;
+    private String value;
+
 
     public Coordonnee(String coord) {
         this.x = calcX(coord);
         this.y = calcY(coord);
-        this.coord = x+Integer.toString(y);
+        this.hit = false;
+        this.value = this.x+Integer.toString(this.y);
     }
 
     private int calcY(String coord) {
@@ -38,21 +41,19 @@ public class Coordonnee {
     }
 
 
+
+    public boolean equals(String value) {
+        return this.getValue().equals(value);
+    }
+
+    public boolean equals(Coordonnee coord){
+        return this.getValue().equals(coord.getValue());
+    }
+
     public void setHit(){
-        this.coord = "X";
+        this.hit = true;
     }
 
-    public boolean isHit(){
-        boolean hit;
-        if (this.coord.equals("X")){
-            hit = true;
-        }
-        else{
-            hit = false;
-        }
-        return hit;
-
-    }
 
     public char getX() {
         return this.x;
@@ -62,7 +63,12 @@ public class Coordonnee {
         return this.y;
     }
 
-    public String getValue(){
-        return this.coord;
+    private String getValue(){
+        return this.value;
     }
+
+    public boolean getHit(){
+        return this.hit;
+    }
+
 }
