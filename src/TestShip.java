@@ -3,7 +3,7 @@ import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class TestShip {
-
+/*
     public static void main(String[] args) {
         System.out.println("Lancement des tests unitaires\n\n");
         Rules rules = new Rules();
@@ -48,4 +48,5 @@ public class TestShip {
         System.out.println("===== ===== ===== ===== ===== ===== =====");
 
     }
+    */
 }

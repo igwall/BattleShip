@@ -2,22 +2,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Player {
+public abstract class Player {
     // Tableau des unités du joueur (1 bateau de taille 2, 2 bateaux de taille 3, etc...
 
     protected int score = 0; // Nombre de bateau détruit par le joueur
-
     //Contient l'ensemble des bateaux du joueur
+    protected int[] capacity;
     protected List<Ship> army = new ArrayList<Ship>();
     protected String name;
     protected int token;
     protected List<Coordonnee> shot = new ArrayList<>();
 
 
-    public Player(String name, int tok){
+    public Player(String name){
         this.name = name;
-        this.token = tok;
+        this.capacity = new int[]{0,0,1,2,1,1};
     }
+
+    public Player(String name, int[] customArmy){
+        this.name = name;
+        this.capacity = customArmy;
+    }
+
 
     public boolean isHit(String coord){
         boolean hit = false;
@@ -89,9 +95,6 @@ public class Player {
         return inList;
     }
 
-
-
-
     public void editShipHit(String shot){
         for (Ship s:army){
             s.editHit(shot);
@@ -114,6 +117,34 @@ public class Player {
         this.shot.add(coord);
     }
 
+    public boolean isAvailableShipLength(int length){
+        return (capacity[length] > 0 );
+    }
+
+    public void editAvailableShip(int length){
+        capacity[length] -= 1;
+    }
+
+    public String getAvailableShip(){
+        String  output = "You still have :\n";
+        for (int i=0; i < capacity.length; i++ ){
+            if(capacity[i] != 0) {
+                output += Integer.toString(capacity[i]) + " ship of size " + Integer.toString(i) +"\n";
+            }
+        }
+        return output;
+    }
+
+    public int getMaxLengthShip(){
+        return capacity.length;
+    }
+
+    public String getCoord(){
+        return "A1";
+    }
+    public String getShot(){
+        return "A1";
+    }
 
 }
 

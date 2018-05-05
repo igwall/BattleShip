@@ -1,9 +1,10 @@
 import java.util.Scanner;
 public class Human extends Player {
 
-    public Human(String name, int tok){
-        super(name,tok);
+    public Human(String name){
+        super(name);
     }
+    public Human(String name, int[] customArmy){super(name, customArmy);}
 
 
     public String getCoord(){

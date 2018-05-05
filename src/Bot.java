@@ -2,12 +2,20 @@
 
 public class Bot extends Player {
     public Bot(){
-        super("Jarvis",0);
+        super("Jarvis");
     }
 
-    public Coordonnee getCoord(){
+
+    public String getShot(){
         // La partie complexe
-        Coordonnee coord =  new Coordonnee("B3");
+        String shot = "B3";
+        return shot;
+    }
+
+    public String getCoord(){
+        String coord = "B3";
         return coord;
     }
+
+
 }
