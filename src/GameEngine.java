@@ -224,12 +224,12 @@ public class GameEngine {
         }
 
         if(player1.getScore() == nbShip && player2.getScore() == nbShip){
-            System.out.println("Egalité parfaite");
+            System.out.println("There no winner for this game...");
         }
         else if(player1.getScore() == nbShip && player2.getScore() < nbShip){
             System.out.println(player1.getName()+", win the game !");
         } else{
-            System.out.println("Bravo "+player2.getName()+", vous remportez cette partie !");
+            System.out.println(player2.getName()+", win the game !");
         }
     }
 
