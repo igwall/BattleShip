@@ -5,48 +5,38 @@
 > Battleship est un projet de 3eme année (première année de cycle ingénieur) du département Polytech Montpellier. L'objectif est de créer un programme de jeu Battleship en version solo (contre un ordinateur) et duo (deux joueurs humains qui se confrontent). Vous trouverez dans ce document toute les informations sur les classes générées et leurs variables personnelles.
 
 ## Les classes de jeu
-> Voici l'ensemble des classes de jeu utilisées pour cette version de Battleship : 
+> Voici l'ensemble des classes de jeu utilisées pour cette version de Battleship :
 
 
-### La classe Launcher :
-> La classe launcher initialise l'ensemble du jeu. Vous pouvez décider de jouer en solo ou en duo. si vous jouez en duo, les deux joueurs créés sont des humains, sinon, un joueur sera humain (vous) l'autre sera un bot. (Il y aura surement une version bot vs bot dans la version finale)
+### La classe GameEngine :
+> La classe GameEngine permet l'interraction entre les différents joueurs ou le joueur contre l'ordinateur
 
-***
-### La classe Duo :
 |Securité | Attribut      | Type       |
 |:-------:| ------------- |:----------:|
-| private | joueur1       | Human      | 
-| private | joueur2       | Human      |
+| private | player1       | Player     |
+| private | player2       | Player     |
 | private | nbShip        | int        |
-    
-
-#### public Duo(String namePlayer1, String namePlayer2)
-> Constructeur de la classe qui initialise deux joueurs avec leurs prenoms.
-
-#### public void newGame()
-> Fonction qui lance une nouvelle partie. Les deux joueurs vont alors s'affronter. 
+| private | capacity      | int[]      |
+| private | sizeMap       | int        |
+| private | currentPlayer | Player     |
+| private | oppositePlayer| Player     |
 
 
-### La classe Solo :
-> En cours de finission, le bot doit pouvoir tirer et s'adapter, ce qui est en cours :) 
-
-
-
-
-
+#### public static void main(String[] args)
+> Fonction de la partie. Elle prend en considération l'ensemble des étapes du jeu : Saisie des bateaux, saisie des tirs, affichage des différentes interfaces, etc...
 
 ***
-### La classe Solo : 
+### La classe Solo :
 >En cours
 
 
-*** 
+***
 ### La classe Player :
-    
+
 
 |Securité | Attribut      | Type          |
 |:-------:| ------------- |:-------------:|
-| protected | capacity[]  | int           | 
+| protected | capacity[]  | int           |
 | protected | score       | int           |
 | protected | army        | <Ship>        |
 | protected | name        | String        |
@@ -56,10 +46,7 @@
 
 
 #### public Player(String name)
-> Construit un joueur avec un nom.
-
-#### public void shipGenerator(int current)
-> Génère un tableau et l'ajoute à son armée (army)
+> Construit un joueur avec un nom. et défini la capacité des bateaux par défaut
 
 #### public boolean isHit(Coordonnee coord)
 > Fonction qui parcourre l'ensemble des bateaux du joueur et regarde si le bateau est touché
@@ -89,6 +76,38 @@
 #### public void setScore(int score)
 > Modifie le score du joueur
 
+### public void addShip(Ship ship)
+> Ajoute un bateau a l'armée du joueur
+### public boolean isHit(String coord)
+> Vérifie si la coordonnée entrée en paramètre touche un des bateaux de l'armée du joueur. Elle renvoi true si ça touche, false sinon.
+
+### public boolean isUsed(Position position)
+> IsUsed prend en compte un un objet de type position et vérifie si la position est disponible. Renvoi true si la position est disponible et qu'aucun bateau n'utilise une seule des coordonnées du bateau.
+
+### public boolean isShooted(String coord)
+
+### public boolean isHitSHot(String input)
+
+### public void editShipHit(String shot)
+
+###public void addShot(Coordonnee coord)
+
+### public boolean isAvailableShipLength(int length)
+
+### public void editAvailableShip(int length)
+
+### public String getAvailableShip()
+
+### public int getMaxLengthShip()
+
+### public String getCoord()
+
+### public String getShot()
+
+
+
+
+
 
 
 ***
@@ -97,7 +116,7 @@
 
 #### public Coordonnee getTir()
 > Fonction qui renvoi la coordonnée généré par la saisie de l'utilisateur. Cette fonction sera différente pour le Bot car elle demande un traitement d'analyse et de saisie particulier.  
-        
+
 ***
 ### La classe Human :
 > En cours de création
@@ -105,24 +124,24 @@
 ***
 ### La classe Ship :
 #### public Ship(char startCoord, char endCoord):
-> Constructeur de la classe Ship, il permet de créer un nouveau bateau. Le bateaue st caractérisé par ses coordonnées. 
+> Constructeur de la classe Ship, il permet de créer un nouveau bateau. Le bateaue st caractérisé par ses coordonnées.
 Les coordonnées correspondent à un tableau de coordonée. Une coordonnée correspond à une lettre et un chiffre ex : B3, C3, D3
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
 ***
 ### La classe Coordoonée :
 
 
 |Securité | Attribut      | Type          |
 |:-------:| ------------- |:-------------:|
-| private | x             | char          | 
+| private | x             | char          |
 | private | y             | int           |
 | private | coord         | String        |
 
@@ -151,27 +170,27 @@ Les coordonnées correspondent à un tableau de coordonée. Une coordonnée corr
 
 #### public String getValue()
 > Renvoi la valeur "brute" de la coordonnée (son String)
-     
-     
-     
-     
-     
-     
-     
-     
-     
+
+
+
+
+
+
+
+
+
 ***
  ### La classe Position :
 
 |Securité | Attribut      | Type          |
 |:-------:| ------------- |:-------------:|
-| private | emplacement   | Coordonnee[]  | 
+| private | emplacement   | Coordonnee[]  |
 | private | vertical      | boolean       |
 | private | length        | int           |
 
 
  #### public Position(Coordonnee startCoord, Coordonnee endCoord)
- > Constructeur de l'objet Position. Il prends en considération deux coordonnées pour générer l'ensemble des autres coordonnées. 
+ > Constructeur de l'objet Position. Il prends en considération deux coordonnées pour générer l'ensemble des autres coordonnées.
  ex : B1 -> B4 = B1, B2, B3, B4
 
 #### private Coordonnee[] tableGeneratorH(char x1, char x2, int y)
@@ -181,7 +200,7 @@ Les coordonnées correspondent à un tableau de coordonée. Une coordonnée corr
 > Génère un tableau dont les coordonnées sont Verticales
 
 #### public boolean isIn(Coordonnee coord)
-> Vérifie si la coordonnée entrée en paramètre est présent dans l'ensemble des coordonnées de position. 
+> Vérifie si la coordonnée entrée en paramètre est présent dans l'ensemble des coordonnées de position.
 
 #### public boolean allHit()
 > Si toute les coordonnées dans Position sont touchées (Coordonnée remplacée par "X") renvoie True, sinon, renvoi False.
@@ -209,10 +228,10 @@ Les coordonnées correspondent à un tableau de coordonée. Une coordonnée corr
 > Affiche la grille qui sauvegarde les tirs effectués
 
 #### public void addHit(Coordonnee coord)
-> Rajoute la coordonnée entrée en paramètre comme étant touchée dans la grille du joueur. 
+> Rajoute la coordonnée entrée en paramètre comme étant touchée dans la grille du joueur.
 
 #### public void miss(Coordonnee coord)
-> Rajoute la coordonnée entrée en paramètre comme étant ratée dans la grille du joueur. 
+> Rajoute la coordonnée entrée en paramètre comme étant ratée dans la grille du joueur.
 
 
 
@@ -224,7 +243,7 @@ Les coordonnées correspondent à un tableau de coordonée. Une coordonnée corr
 
 
 
-*** 
+***
 ### La classe GrilleBateau :
 > Classe enfant de la classe Grille.
 
@@ -255,11 +274,11 @@ Les coordonnées correspondent à un tableau de coordonée. Une coordonnée corr
 
 ***
 ### La classe Grille:
-> Classe parente des grilles GrilleBateau et Grille Tir. Les deux grilles ont les mêmes paramètres, seul leur traitement diffère. 
+> Classe parente des grilles GrilleBateau et Grille Tir. Les deux grilles ont les mêmes paramètres, seul leur traitement diffère.
 
 |Securité           | Attribut      | Type          |
 |:-------:          | ------------- |:-------------:|
-| protected static  | size          | int           | 
+| protected static  | size          | int           |
 | protected         | grille[]      | int[]         |
 
 
@@ -274,11 +293,11 @@ Les coordonnées correspondent à un tableau de coordonée. Une coordonnée corr
 > Récupère La valeur X de la coordonnée pour pouvoir la traitée sur la matrice.
 
 #### public boolean coordControl(Coordonnee coord)
-> Vérifie que la coordonnée entrée est dans la matrice. 
+> Vérifie que la coordonnée entrée est dans la matrice.
 
 ***
 
-## Hiérarchie et génération (schéma) : 
+## Hiérarchie et génération (schéma) :
 
     Launcher
     |
@@ -296,4 +315,3 @@ Les coordonnées correspondent à un tableau de coordonée. Une coordonnée corr
                     |  --- Name
                     |  --- GrilleTir
                     |  --- GrilleBateau
-

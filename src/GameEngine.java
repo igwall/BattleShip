@@ -7,7 +7,6 @@ public class GameEngine {
         static private int[] capacity;
         static private int sizeMap;
         static private int nbShip;
-        static private boolean typeGameDuo;
         static Player currentPlayer;
         static Player oppositePlayer;
 
@@ -386,5 +385,3 @@ public class GameEngine {
         }
 
     }
-
-

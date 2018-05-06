@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public abstract class Player {
     // Tableau des unités du joueur (1 bateau de taille 2, 2 bateaux de taille 3, etc...
@@ -10,7 +9,6 @@ public abstract class Player {
     protected int[] capacity;
     protected List<Ship> army = new ArrayList<Ship>();
     protected String name;
-    protected int token;
     protected List<Coordonnee> shot = new ArrayList<>();
 
 
@@ -109,10 +107,6 @@ public abstract class Player {
         this.score = score;
     }
 
-    public int getToken(){
-        return this.token;
-    }
-
     public void addShot(Coordonnee coord){
         this.shot.add(coord);
     }
@@ -142,35 +136,9 @@ public abstract class Player {
     public String getCoord(){
         return "A1";
     }
+
     public String getShot(){
         return "A1";
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
