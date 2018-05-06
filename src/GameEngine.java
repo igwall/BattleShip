@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 import static java.lang.Character.isLetter;
 
 public class GameEngine {
@@ -144,6 +143,7 @@ public class GameEngine {
                 }
             }
             else{
+
                     String coord1 = player2.getCoord();
                     String coord2 = player2.getCoord();
                     Ship ship = new Ship(coord1,coord2);
@@ -181,17 +181,17 @@ public class GameEngine {
                     coordCheck = controlInput(shot);
                     switch (coordCheck) {
                         case 1:
-                            System.out.println("Trop de lettres dans votre saisie");
+                            System.out.println("Too many letters in your input, not correct");
                             break;
                         case 2:
-                            System.out.println("Vous avez inséré un caractère incorrect");
+                            System.out.println("There a special character... What could I do with it ?!");
                             break;
 
                         case 3:
                             System.out.println("The input is not valid... try something like A1 - a1 - 1a - 1A");
                             break;
                         default:
-                            System.out.println("La coordonnée entrée est valide.");
+                            System.out.println("Your input is correct.");
                     }
                 }
                 System.out.println(shot);

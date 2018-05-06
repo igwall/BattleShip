@@ -92,9 +92,14 @@ public class Position {
         int i = 0;
         while (i < emplacement.length && !hit) {
             if (emplacement[i].equals(value)) {
-                hit = true;
-            } else {
-                hit = false;
+                if(emplacement[i].getHit()){
+                    hit = false;
+                }
+                else {
+                    hit = true;
+                }
+            }
+            else{
                 i++;
             }
 
