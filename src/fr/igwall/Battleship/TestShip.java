@@ -1,3 +1,5 @@
+package fr.igwall.Battleship;
+
 import javax.sound.midi.Soundbank;
 import java.sql.SQLOutput;
 import java.util.Scanner;
@@ -25,21 +27,21 @@ public class TestShip {
 
         Position position = new Position(coord,coord2);
         System.out.println("position.getLength() = " + position.getLength());
-        Human player1 = new Human("Bill",0);
-        Human player2 = new Human("Jack",1);
+        fr.igwall.Battleship.Human player1 = new fr.igwall.Battleship.Human("Bill",0);
+        fr.igwall.Battleship.Human player2 = new fr.igwall.Battleship.Human("Jack",1);
 
         System.out.println("rules.positionControl(position, player1) = " + rules.positionControl(position, player1));
         rules.updateCapacity(position,player1);
 
         System.out.println("\n\n===== ===== ===== ===== ===== ===== =====");
         System.out.println("Controle des tirs");
-        Ship ship = new Ship(coord, coord2);
+        fr.igwall.Battleship.Ship ship = new fr.igwall.Battleship.Ship(coord, coord2);
         player1.addShip(ship);
 
         String coordShot = "A2" ;
         System.out.println("player1.isHit(\"A2\") = " + player1.isHit(coordShot));
 
-        Coordonnee newShot = new Coordonnee(coordShot);
+        fr.igwall.Battleship.Coordonnee newShot = new fr.igwall.Battleship.Coordonnee(coordShot);
         newShot.setHit();
         player2.addShot(newShot);
 
