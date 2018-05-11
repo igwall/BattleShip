@@ -1,6 +1,9 @@
 package fr.igwall.Battleship;
 
-import java.sql.SQLOutput;
+import fr.igwall.Battleship.Player.*;
+import fr.igwall.Battleship.Player.IA.*;
+
+
 import java.util.Scanner;
 import static java.lang.Character.isLetter;
 
@@ -170,6 +173,8 @@ public class GameEngine {
                         }
                         if (currentPlayer.isShooted(shot)) {
                             allcheck = false;
+                            coordCheck = -1;
+
                             System.out.println("You've already shot there... please enter an other shot: ");
                         } else {
                             allcheck = true;
@@ -223,93 +228,93 @@ public class GameEngine {
                 //========= DEBUT SOLO
 
 
-                    System.out.println(player1.getName() + ", you will complete your army :");
-                    int i = 1;
-                    while (i <= nbShip) {
-                        System.out.println(displayGridShip(player1));
-                        System.out.println(player2.getAvailableShip());
+                System.out.println(player1.getName() + ", you will complete your army :");
+                int i = 1;
+                while (i <= nbShip) {
+                    System.out.println(displayGridShip(player1));
+                    System.out.println(player2.getAvailableShip());
 
-                        System.out.println("Informations for ship " + Integer.toString(i));
-                        boolean allCheck = false;
-                        String coord1 = "";
-                        String coord2 = "";
+                    System.out.println("Informations for ship " + Integer.toString(i));
+                    boolean allCheck = false;
+                    String coord1 = "";
+                    String coord2 = "";
 
-                        while (!allCheck) {
-                            int coord1Check = -1;
-                            int coord2Check = -1;
-                            boolean positionCheck;
-                            boolean positionAvailable = false;
+                    while (!allCheck) {
+                        int coord1Check = -1;
+                        int coord2Check = -1;
+                        boolean positionCheck;
+                        boolean positionAvailable = false;
 
-                            while (coord1Check != 0) {
-                                System.out.println("Please input the first coord :");
-                                Scanner inputCoord1 = new Scanner(System.in);
-                                coord1 = inputCoord1.next();
-                                coord1Check = Coordonnee.controlInput(coord1);
-                                switch (coord1Check) {
-                                    case 1:
-                                        System.out.println("Too many letters in your input... try something like A1 - a1 - 1a - 1A");
-                                        break;
-                                    case 2:
-                                        System.out.println("There a special character ! Try something like A1 - a1 - 1a - 1A");
-                                        break;
+                        while (coord1Check != 0) {
+                            System.out.println("Please input the first coord :");
+                            Scanner inputCoord1 = new Scanner(System.in);
+                            coord1 = inputCoord1.next();
+                            coord1Check = Coordonnee.controlInput(coord1);
+                            switch (coord1Check) {
+                                case 1:
+                                    System.out.println("Too many letters in your input... try something like A1 - a1 - 1a - 1A");
+                                    break;
+                                case 2:
+                                    System.out.println("There a special character ! Try something like A1 - a1 - 1a - 1A");
+                                    break;
 
-                                    case 3:
-                                        System.out.println("The input is not valid... Try something like A1 - a1 - 1a - 1A");
-                                        break;
-                                    case 4:
-                                        System.out.println("Your input is not in this grid... ");
-                                        break;
-                                    default:
-                                        System.out.println("Input checked");
-                                }
-
+                                case 3:
+                                    System.out.println("The input is not valid... Try something like A1 - a1 - 1a - 1A");
+                                    break;
+                                case 4:
+                                    System.out.println("Your input is not in this grid... ");
+                                    break;
+                                default:
+                                    System.out.println("Input checked");
                             }
 
-                            while (coord2Check != 0) {
-                                System.out.println("Please input the second coord :");
-                                Scanner inputCoord2 = new Scanner(System.in);
-                                coord2 = inputCoord2.next();
-                                coord2Check = Coordonnee.controlInput(coord2);
-                                switch (coord2Check) {
-                                    case 1:
-                                        System.out.println("Too many letters in your input... try something like A1 - a1 - 1a - 1A");
-                                        break;
-                                    case 2:
-                                        System.out.println("There a special character ! Try something like A1 - a1 - 1a - 1A");
-                                        break;
+                        }
 
-                                    case 3:
-                                        System.out.println("The input is not valid... try something like A1 - a1 - 1a - 1A");
-                                        break;
-                                    case 4:
-                                        System.out.println("Your input is not in this grid... ");
-                                        break;
+                        while (coord2Check != 0) {
+                            System.out.println("Please input the second coord :");
+                            Scanner inputCoord2 = new Scanner(System.in);
+                            coord2 = inputCoord2.next();
+                            coord2Check = Coordonnee.controlInput(coord2);
+                            switch (coord2Check) {
+                                case 1:
+                                    System.out.println("Too many letters in your input... try something like A1 - a1 - 1a - 1A");
+                                    break;
+                                case 2:
+                                    System.out.println("There a special character ! Try something like A1 - a1 - 1a - 1A");
+                                    break;
 
-                                    default:
-                                        System.out.println("Input checked");
-                                }
-                            }
+                                case 3:
+                                    System.out.println("The input is not valid... try something like A1 - a1 - 1a - 1A");
+                                    break;
+                                case 4:
+                                    System.out.println("Your input is not in this grid... ");
+                                    break;
 
-                            positionCheck = player1.positionControl(coord1, coord2);
-                            if (positionCheck) {
-                                int length = Coordonnee.calcLength(coord1, coord2);
-                                positionAvailable = player1.isAvailableShipLength(length);
-                                if (positionAvailable) {
-                                    allCheck = true;
-                                    player1.editAvailableShip(length);
-                                } else {
-                                    System.out.println("You can't place a ship like this...");
-                                }
-                            } else {
-                                System.out.println("Sorry, but you can't put a ship there, there already a ship");
+                                default:
+                                    System.out.println("Input checked");
                             }
                         }
-                        Ship ship = new Ship(coord1, coord2);
-                        player1.addShip(ship);
-                        i++;
-                    }
 
-                    player2.createFleet();
+                        positionCheck = player1.positionControl(coord1, coord2);
+                        if (positionCheck) {
+                            int length = Coordonnee.calcLength(coord1, coord2);
+                            positionAvailable = player1.isAvailableShipLength(length);
+                            if (positionAvailable) {
+                                allCheck = true;
+                                player1.editAvailableShip(length);
+                            } else {
+                                System.out.println("You can't place a ship like this...");
+                            }
+                        } else {
+                            System.out.println("Sorry, but you can't put a ship there, there already a ship");
+                        }
+                    }
+                    Ship ship = new Ship(coord1, coord2);
+                    player1.addShip(ship);
+                    i++;
+                }
+
+                player2.createFleet();
 
                 System.out.println("All the ship are generated, let's begin ! ");
                 Thread.sleep(2000);
@@ -454,29 +459,17 @@ public class GameEngine {
 
                 }
                 */
-                int scoreiA1 = 0;
-                int scoreiA2 = 0;
-                int pile = 0;
-                int face = 0;
-                for(int i =0; i<100;i++){
 
-                    if(Math.random() < 0.5){
-                        pile += 1;
-                    }
-                    else{
-                        face +=1;
-                    }
 
-                }
-                System.out.println("face = " + face);
-                System.out.println("pile = " + pile);
-                
-                
+
                 for(int j = 0;j<10; j++) {
+                    int scoreiA1 = 0;
+                    int scoreiA2 = 0;
                     System.out.println("========");
+
                     for (int i = 0; i < 100; i++) {
                         IAMedium iA1 = new IAMedium();
-                        IABeginner iA2 = new IABeginner();
+                        IAHardcore iA2 = new IAHardcore();
 
                         iA1.createFleet();
                         iA2.createFleet();
@@ -496,10 +489,15 @@ public class GameEngine {
                                 iA1.addShot(newShot);
                             }
 
+
+
+
+
+
                             String shot2 = iA2.getShot();
-                            boolean hit2 = iA1.isHit(shot);
+                            boolean hit2 = iA1.isHit(shot2);
                             if (hit2) {
-                                iA1.editShipHit(shot);
+                                iA1.editShipHit(shot2);
                                 Coordonnee newShot2 = new Coordonnee(shot2);
                                 newShot2.setHit();
                                 iA2.addShot(newShot2);
@@ -516,8 +514,9 @@ public class GameEngine {
                             scoreiA2++;
                         }
                     }
+
                     System.out.println("Score de l'IA medium: "+ scoreiA1);
-                    System.out.println("Score de l'IA beginner: "+ scoreiA2);
+                    System.out.println("Score de l'IA hardcore: "+ scoreiA2);
                 }
             } else {
                 System.out.println("Life is easy. Why do we make it so hard ?");
@@ -529,93 +528,93 @@ public class GameEngine {
 
 
 
-        private static String displayGridShot(Player player){
-            System.out.println("Grid of your shots: ");
-            char index = 'A';
-            String line = "    "+ Character.toString(index);
-            for (int i = 1; i < sizeMap; i++) {
-                index++;
-                line += "  " + Character.toString(index);
+    private static String displayGridShot(Player player){
+        System.out.println("Grid of your shots: ");
+        char index = 'A';
+        String line = "    "+ Character.toString(index);
+        for (int i = 1; i < sizeMap; i++) {
+            index++;
+            line += "  " + Character.toString(index);
 
+        }
+        line += "\n";
+        char x = 'A';
+
+        for (int i = 1; i<= sizeMap; i++){
+            if(i<10){
+                line += " "+Integer.toString(i);
             }
-            line += "\n";
-            char x = 'A';
-
-            for (int i = 1; i<= sizeMap; i++){
-                if(i<10){
-                    line += " "+Integer.toString(i);
-                }
-                else{
-                    line += Integer.toString(i);
-                }
-                //Chiffre
-                x = 'A';
-                for(int y = 1; y <= sizeMap; y++ ){
-                    String coord = x + Integer.toString(i);
-                    if (player.isShooted(coord)){
-                        if(player.isHitSHot(coord)){
-                            line += "  •";
-                        }
-                        else{
-                            line += "  X";
-                        }
-                    } else {
-                        line += "   ";
+            else{
+                line += Integer.toString(i);
+            }
+            //Chiffre
+            x = 'A';
+            for(int y = 1; y <= sizeMap; y++ ){
+                String coord = x + Integer.toString(i);
+                if (player.isShooted(coord)){
+                    if(player.isHitSHot(coord)){
+                        line += "  •";
                     }
-                    x++;
+                    else{
+                        line += "  X";
+                    }
+                } else {
+                    line += "   ";
                 }
-
-                line += "\n";
+                x++;
             }
-            return line;
+
+            line += "\n";
+        }
+        return line;
+    }
+
+    private static String displayGridShip(Player player){
+        System.out.println("Grid of your ships: ");
+        char index = 'A';
+        String line = "    " + Character.toString(index);
+        for (int i = 1; i < sizeMap; i++) {
+            index++;
+            line += "  " + Character.toString(index);
         }
 
-        private static String displayGridShip(Player player){
-            System.out.println("Grid of your ships: ");
-            char index = 'A';
-            String line = "    " + Character.toString(index);
-            for (int i = 1; i < sizeMap; i++) {
-                index++;
-                line += "  " + Character.toString(index);
+        line +="\n";
+        char x = 'A';
+        for (int i = 1; i<= sizeMap; i++){
+            if(i<10){
+                line += " "+Integer.toString(i);
+            }
+            else{
+                line += Integer.toString(i);
+            }
+
+            //Chiffre
+            x = 'A';
+            for(int y = 1; y <= sizeMap; y++ ){
+                String coord = x + Integer.toString(i);
+                if (player.isHit(coord)) {
+                    if(player.isDammagedShip(coord))
+                        line += "  X";
+                    else{
+                        line += "  •";
+                    }
+
+                } else {
+                    line += "   ";
+                }
+                x++;
             }
 
             line +="\n";
-            char x = 'A';
-            for (int i = 1; i<= sizeMap; i++){
-                if(i<10){
-                    line += " "+Integer.toString(i);
-                }
-                else{
-                    line += Integer.toString(i);
-                }
-
-                //Chiffre
-                x = 'A';
-                for(int y = 1; y <= sizeMap; y++ ){
-                    String coord = x + Integer.toString(i);
-                    if (player.isHit(coord)) {
-                        if(player.isDammagedShip(coord))
-                            line += "  X";
-                        else{
-                            line += "  •";
-                        }
-
-                    } else {
-                        line += "   ";
-                    }
-                    x++;
-                }
-
-                line +="\n";
-            }
-            return line;
         }
+        return line;
+    }
 
 
 
-        public static int getSizeMap(){
-            return sizeMap;
-        }
+    public static int getSizeMap(){
+        return sizeMap;
+    }
 
     public static int getNbShip() {
         return nbShip;

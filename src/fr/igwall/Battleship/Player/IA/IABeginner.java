@@ -1,5 +1,6 @@
-package fr.igwall.Battleship;
-import java.util.Random;
+package fr.igwall.Battleship.Player.IA;
+import fr.igwall.Battleship.Player.IA.Bot;
+
 public class IABeginner extends Bot {
 
     public IABeginner(){

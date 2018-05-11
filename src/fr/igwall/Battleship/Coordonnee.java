@@ -1,6 +1,7 @@
 package fr.igwall.Battleship;
 
 import static java.lang.Character.isLetter;
+import fr.igwall.Battleship.GameEngine;
 
 public class Coordonnee {
     private char x;
@@ -128,7 +129,15 @@ public class Coordonnee {
 
     public boolean equals(String coord){
         coord = traitment(coord);
-        return this.getValue().equals(coord);
+        int coordY = calcY(coord);
+        char coordX = calcX(coord);
+
+        if (this.getX() == coordX && this.getY() == coordY){
+            return true;
+        }else{
+            return false;
+        }
+
 
     }
 
@@ -137,6 +146,7 @@ public static String traitment(String coord){
         int y = calcY(coord);
         coord = x+Integer.toString(y);
         return coord;
+
 }
 
     public void setHit(){

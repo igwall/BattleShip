@@ -1,4 +1,5 @@
-package fr.igwall.Battleship;
+package fr.igwall.Battleship.Player;
+import fr.igwall.Battleship.Player.Player;
 
 public class Human extends Player {
 

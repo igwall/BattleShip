@@ -106,11 +106,10 @@ public class Ship {
         boolean allHit = true;
         int i = 0;
         while (i < position.length && allHit) {
-            if (position[i].getHit()) {
-                allHit = true;
-            } else {
+            if (!position[i].getHit()) {
                 allHit = false;
             }
+
             i++;
         }
         return allHit;
@@ -135,5 +134,13 @@ public class Ship {
         return dammaged;
     }
 
+    public void getCoord(){
+        String line ="";
+        for(Coordonnee c : position){
+            line+= c.getValue()+", ";
+
+        }
+        System.out.println(line);
+    }
 
 }

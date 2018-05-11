@@ -1,5 +1,7 @@
-package fr.igwall.Battleship;
+package fr.igwall.Battleship.Player;
 
+import fr.igwall.Battleship.Ship;
+import fr.igwall.Battleship.Coordonnee;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,8 +64,7 @@ public abstract class Player {
     public boolean isHit(String coord){
         boolean hit = false;
         for(Ship s:army){
-            boolean shipHit;
-            shipHit = s.isHit(coord);
+            boolean shipHit = s.isHit(coord);
             if(shipHit){
                 hit =true;
             }
@@ -221,11 +222,11 @@ public abstract class Player {
     }
 
     public void getAllShoot(){
-        String line = "";
+        int countSHoot = 0;
         for(Coordonnee c : shot){
-            line += c.getValue()+", ";
+            countSHoot++;
         }
-        System.out.println(line);
+        System.out.println(countSHoot);
     }
 
 }

@@ -1,4 +1,9 @@
-package fr.igwall.Battleship;
+package fr.igwall.Battleship.Player.IA;
+
+import fr.igwall.Battleship.Coordonnee;
+import fr.igwall.Battleship.GameEngine;
+import fr.igwall.Battleship.Player.Player;
+import fr.igwall.Battleship.Ship;
 
 import java.util.Random;
 
@@ -14,7 +19,7 @@ public abstract class Bot extends Player {
         String coord1 ="";
         String coord2="";
 
-        for(int i=0; i < GameEngine.getNbShip();i++){
+        for(int i = 0; i < GameEngine.getNbShip(); i++){
             boolean vertical = getRandomVertical();
             boolean allCheck = false;
             while(!allCheck) {
