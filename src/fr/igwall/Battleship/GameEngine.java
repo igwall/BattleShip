@@ -2,14 +2,9 @@ package fr.igwall.Battleship;
 
 import fr.igwall.Battleship.Player.*;
 import fr.igwall.Battleship.Player.IA.*;
-
-
 import java.util.Scanner;
-import static java.lang.Character.isLetter;
 
 public class GameEngine {
-    static private Player player1;
-    static private Player player2;
     static private int sizeMap = 10;
     static private int nbShip = 5;
 
@@ -19,10 +14,11 @@ public class GameEngine {
             System.out.println("Welcome on this edition on Battleship\n" +
                     "-- made by Lucas Gonçalves\n" + "==== ==== ==== ==== ==== ====\n\n" +
                     "3 mods are available : \n" +
-                    "Single mod, you will play versus Jarvis, our bot\n" +
+                    "Single mod, you will play versus Jarvis, our iA\n" +
                     "Dual mod, fight against your friend\n" +
-                    "iA mod, two iA will fight\n" +
-                    "Wich mod would you like to play to ? (D pour Dual, S for Single, I fir iA vs iA)");
+                    "iA mod, two iA will fight against\n" +
+                    "ULTRA Mod, each levels of iA vs each others (100 rounds by figth)"+
+                    "Wich mod would you like to play to ? (D pour Dual, S for Single, I for iA vs iA, U for Ultra)");
             Scanner cs = new Scanner(System.in);
             String choice = cs.next();
             char letter = choice.charAt(0);
@@ -55,7 +51,6 @@ public class GameEngine {
                         boolean allCheck = false;
                         String coord1 = "";
                         String coord2 = "";
-
                         while (!allCheck) {
                             int coord1Check = -1;
                             int coord2Check = -1;
@@ -222,7 +217,7 @@ public class GameEngine {
                 Scanner scan = new Scanner(System.in);
                 String name = scan.next();
                 Human player1 = new Human(name);
-                IAMedium player2 = new IAMedium();
+                IAHardcore player2 = new IAHardcore();
                 goodChoice = true;
 
                 //========= DEBUT SOLO
@@ -414,17 +409,17 @@ public class GameEngine {
 
             } else if (letter == 'I') {
 
+                System.out.println("There, you will see 100 round in few seconds !");
                 boolean correctInput = false;
                 boolean correctInput2 = false;
-                /*
+                IA iA1 = new IABeginner();
+                IA iA2 = new IABeginner();
                 while (!correctInput) {
                     System.out.println("Please input the level of the first iA (B for Beginner, M for Medium and H for Hardcore");
-
                     Scanner scanIaOne = new Scanner(System.in);
                     String level1 = scanIaOne.next();
                     char letterLevel = level1.charAt(0);
                     if (letterLevel == 'B') {
-                        iA1 = new IABeginner();
                         correctInput = true;
                     } else if (letterLevel == 'M') {
                         iA1 = new IAMedium();
@@ -444,7 +439,6 @@ public class GameEngine {
                     String level2 = scanIaTwo.next();
                     char letterLevel2 = level2.charAt(0);
                     if (letterLevel2 == 'B') {
-                        iA2 = new IABeginner();
                         correctInput2 = true;
                     } else if (letterLevel2 == 'M') {
                         iA2 = new IAMedium();
@@ -458,73 +452,53 @@ public class GameEngine {
                     }
 
                 }
-                */
+
+                String resultOfFigth = iaFighter(iA1, iA2);
+                System.out.println(resultOfFigth);
+
+            } else if(letter == 'U'){
+                IA iA1 = new IABeginner();
+                IA iA2 = new IABeginner();
+                System.out.println(" iA1 : Beginner vs iA2 : Beginner\n Result:");
+                String resultOfFigth = iaFighter(iA1, iA2);
+                System.out.println(resultOfFigth);
+
+                System.out.println("==== ==== ==== ");
+                iA1 = new IABeginner();
+                iA2 = new IAMedium();
+                System.out.println(" iA1 : Beginner vs iA2 : Medium\n Result:");
+                resultOfFigth = iaFighter(iA1, iA2);
+                System.out.println(resultOfFigth);
+
+                System.out.println("==== ==== ==== ");
+                iA1 = new IAMedium();
+                iA2 = new IAMedium();
+                System.out.println(" iA1 : Medium vs iA2 : Medium\n Result:");
+                resultOfFigth = iaFighter(iA1, iA2);
+                System.out.println(resultOfFigth);
+
+                System.out.println("==== ==== ==== ");
+                iA1 = new IAMedium();
+                iA2 = new IAHardcore();
+                System.out.println(" iA1 : Medium vs iA2 : Hardcore\n Result:");
+                resultOfFigth = iaFighter(iA1, iA2);
+                System.out.println(resultOfFigth);
+
+                System.out.println("==== ==== ==== ");
+                iA1 = new IAHardcore();
+                iA2 = new IAHardcore();
+                System.out.println(" iA1 : Hardcore -- iA2 : Hardcore\n Result:");
+                resultOfFigth = iaFighter(iA1, iA2);
+                System.out.println(resultOfFigth);
 
 
 
-                for(int j = 0;j<10; j++) {
-                    int scoreiA1 = 0;
-                    int scoreiA2 = 0;
-                    System.out.println("========");
-
-                    for (int i = 0; i < 100; i++) {
-                        IAMedium iA1 = new IAMedium();
-                        IAHardcore iA2 = new IAHardcore();
-
-                        iA1.createFleet();
-                        iA2.createFleet();
-
-                        while (iA1.getScore() < nbShip && iA2.getScore() < nbShip) {
-
-                            String shot = iA1.getShot();
-                            boolean hit = iA2.isHit(shot);
-                            if(hit){
-                                iA2.editShipHit(shot);
-                                Coordonnee newShot = new Coordonnee(shot);
-                                newShot.setHit();
-                                iA1.addShot(newShot);
-                                iA1.setScore(iA2.getCountDestroyed());
-                            } else {
-                                Coordonnee newShot = new Coordonnee(shot);
-                                iA1.addShot(newShot);
-                            }
-
-
-
-
-
-
-                            String shot2 = iA2.getShot();
-                            boolean hit2 = iA1.isHit(shot2);
-                            if (hit2) {
-                                iA1.editShipHit(shot2);
-                                Coordonnee newShot2 = new Coordonnee(shot2);
-                                newShot2.setHit();
-                                iA2.addShot(newShot2);
-                                iA2.setScore(iA1.getCountDestroyed());
-                            } else {
-                                Coordonnee newShot2 = new Coordonnee(shot2);
-                                iA2.addShot(newShot2);
-                            }
-
-                        }
-                        if (iA1.getScore() == nbShip && iA2.getScore() < nbShip) {
-                            scoreiA1++;
-                        } else {
-                            scoreiA2++;
-                        }
-                    }
-
-                    System.out.println("Score de l'IA medium: "+ scoreiA1);
-                    System.out.println("Score de l'IA hardcore: "+ scoreiA2);
-                }
             } else {
                 System.out.println("Life is easy. Why do we make it so hard ?");
             }
         }
 
     }
-
 
 
 
@@ -610,8 +584,6 @@ public class GameEngine {
         return line;
     }
 
-
-
     public static int getSizeMap(){
         return sizeMap;
     }
@@ -620,7 +592,78 @@ public class GameEngine {
         return nbShip;
     }
 
+    private static String iaFighter(IA player1, IA player2){
+        int scoreiA1 = 0;
+        int scoreiA2 = 0;
+        System.out.println("========");
+        for (int i = 0; i < 100; i++) {
+            IA iA1;
+            if (player1 instanceof IABeginner){
+                iA1 = new IABeginner();
+            }
+            else if(player1 instanceof IAMedium){
+                iA1 = new IAMedium();
+            }
+            else{
+                iA1 = new IAHardcore();
+            }
 
+            iA1.createFleet();
+
+            IA iA2;
+            if (player2 instanceof IABeginner){
+                iA2 = new IABeginner();
+            }
+            else if(player2 instanceof IAMedium){
+                iA2 = new IAMedium();
+            }
+            else{
+                iA2 = new IAHardcore();
+            }
+
+            iA2.createFleet();
+
+            while (iA1.getScore() < nbShip && iA2.getScore() < nbShip) {
+
+                String shot = iA1.getShot();
+                boolean hit = iA2.isHit(shot);
+                if(hit){
+                    iA2.editShipHit(shot);
+                    Coordonnee newShot = new Coordonnee(shot);
+                    newShot.setHit();
+                    iA1.addShot(newShot);
+                    iA1.setScore(iA2.getCountDestroyed());
+                } else {
+                    Coordonnee newShot = new Coordonnee(shot);
+                    iA1.addShot(newShot);
+                }
+
+
+
+                String shot2 = iA2.getShot();
+                boolean hit2 = iA1.isHit(shot2);
+                if (hit2) {
+                    iA1.editShipHit(shot2);
+                    Coordonnee newShot2 = new Coordonnee(shot2);
+                    newShot2.setHit();
+                    iA2.addShot(newShot2);
+                    iA2.setScore(iA1.getCountDestroyed());
+                } else {
+                    Coordonnee newShot2 = new Coordonnee(shot2);
+                    iA2.addShot(newShot2);
+                }
+
+            }
+            if (iA1.getScore() == nbShip && iA2.getScore() < nbShip) {
+                scoreiA1++;
+            } else {
+                scoreiA2++;
+            }
+        }
+
+        return "Score de l'IA 1: "+scoreiA1+"\n Score de l'IA2: "+scoreiA2;
+
+    }
 
 }
 

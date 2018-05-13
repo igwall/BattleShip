@@ -4,7 +4,7 @@ import fr.igwall.Battleship.Coordonnee;
 import fr.igwall.Battleship.GameEngine;
 import fr.igwall.Battleship.Player.IA.Bot;
 
-public class IAHardcore extends Bot {
+public class IAHardcore extends Bot implements IA {
     private boolean locked = false;
     private int rigth = 0;
     private int left = 0;
@@ -13,7 +13,6 @@ public class IAHardcore extends Bot {
     private int oldScore = 0;
     private char xInitialHit;
     private int yInitialHit;
-
     private char xLastShot;
     private int yLastShot;
     private Coordonnee lastShot;

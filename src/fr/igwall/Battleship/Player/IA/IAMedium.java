@@ -2,7 +2,7 @@ package fr.igwall.Battleship.Player.IA;
 
 import fr.igwall.Battleship.Player.IA.Bot;
 
-public class IAMedium extends Bot {
+public class IAMedium extends Bot implements IA {
 
     public IAMedium(){
         super();

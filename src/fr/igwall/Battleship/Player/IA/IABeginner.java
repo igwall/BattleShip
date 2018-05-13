@@ -1,7 +1,7 @@
 package fr.igwall.Battleship.Player.IA;
 import fr.igwall.Battleship.Player.IA.Bot;
 
-public class IABeginner extends Bot {
+public class IABeginner extends Bot implements IA {
 
     public IABeginner(){
         super();
