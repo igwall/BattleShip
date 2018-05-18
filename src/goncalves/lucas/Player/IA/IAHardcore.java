@@ -1,10 +1,9 @@
-package fr.igwall.Battleship.Player.IA;
+package goncalves.lucas.Player.IA;
 
-import fr.igwall.Battleship.Coordonnee;
-import fr.igwall.Battleship.GameEngine;
-import fr.igwall.Battleship.Player.IA.Bot;
+import goncalves.lucas.Elements.Coordonnee;
+import goncalves.lucas.Player.IPlaying;
 
-public class IAHardcore extends Bot implements IA {
+public class IAHardcore extends IA implements IPlaying {
     private boolean locked = false;
     private int rigth = 0;
     private int left = 0;
@@ -212,7 +211,6 @@ public class IAHardcore extends Bot implements IA {
             return coord;
         }
     }
-
 
     private String shotDown(){
         String coord;

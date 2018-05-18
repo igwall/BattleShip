@@ -1,8 +1,8 @@
-package fr.igwall.Battleship.Player.IA;
+package goncalves.lucas.Player.IA;
 
-import fr.igwall.Battleship.Coordonnee;
+import goncalves.lucas.Elements.Coordonnee;
 
-public interface IA {
+public interface IiA {
 
     public String getShot();
 

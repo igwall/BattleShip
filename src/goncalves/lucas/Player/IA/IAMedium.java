@@ -1,8 +1,8 @@
-package fr.igwall.Battleship.Player.IA;
+package goncalves.lucas.Player.IA;
 
-import fr.igwall.Battleship.Player.IA.Bot;
+import goncalves.lucas.Player.IPlaying;
 
-public class IAMedium extends Bot implements IA {
+public class IAMedium extends IA implements IiA,IPlaying {
 
     public IAMedium(){
         super();

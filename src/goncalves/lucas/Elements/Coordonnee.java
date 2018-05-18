@@ -1,7 +1,8 @@
-package fr.igwall.Battleship;
+package goncalves.lucas.Elements;
+
+import goncalves.lucas.Battleship;
 
 import static java.lang.Character.isLetter;
-import fr.igwall.Battleship.GameEngine;
 
 public class Coordonnee {
     private char x;
@@ -90,8 +91,8 @@ public class Coordonnee {
         Coordonnee coordToCheck = new Coordonnee(coord);
         int x = Character.getNumericValue(coordToCheck.getX())-9;
         int y = coordToCheck.getY();
-        return (x <= GameEngine.getSizeMap()
-                && y <= GameEngine.getSizeMap()
+        return (x <= Battleship.getSizeMap()
+                && y <= Battleship.getSizeMap()
                 && x > 0
                 && y > 0);
     }

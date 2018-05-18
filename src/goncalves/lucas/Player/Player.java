@@ -1,7 +1,8 @@
-package fr.igwall.Battleship.Player;
+package goncalves.lucas.Player;
 
-import fr.igwall.Battleship.Ship;
-import fr.igwall.Battleship.Coordonnee;
+import goncalves.lucas.Battleship;
+import goncalves.lucas.Elements.Ship;
+import goncalves.lucas.Elements.Coordonnee;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public abstract class Player {
     }
 
     public Player(){
-        this.name = name;
+        this.name = "Jarvis";
         this.capacity = new int[]{0,0,1,2,1,1};
     }
 
@@ -113,7 +114,6 @@ public abstract class Player {
     public String getName(){
         return name;
     }
-
 
     public String getAvailableShip(){
         String  output = "You still have :\n";
@@ -228,6 +228,91 @@ public abstract class Player {
         }
         System.out.println(countSHoot);
     }
+
+
+    //Diplay grid area :
+    public String displayGridShot(){
+        System.out.println("Grid of your shots: ");
+        char index = 'A';
+        String line = "    "+ Character.toString(index);
+        for (int i = 1; i < Battleship.getSizeMap(); i++) {
+            index++;
+            line += "  " + Character.toString(index);
+
+        }
+        line += "\n";
+        char x = 'A';
+
+        for (int i = 1; i<= Battleship.getSizeMap(); i++){
+            if(i<10){
+                line += " "+Integer.toString(i);
+            }
+            else{
+                line += Integer.toString(i);
+            }
+            //Chiffre
+            x = 'A';
+            for(int y = 1; y <= Battleship.getSizeMap(); y++ ){
+                String coord = x + Integer.toString(i);
+                if (isShooted(coord)){
+                    if(this.isHitSHot(coord)){
+                        line += "  •";
+                    }
+                    else{
+                        line += "  X";
+                    }
+                } else {
+                    line += "   ";
+                }
+                x++;
+            }
+
+            line += "\n";
+        }
+        return line;
+    }
+
+    public String displayGridShip(){
+        System.out.println("Grid of your ships: ");
+        char index = 'A';
+        String line = "    " + Character.toString(index);
+        for (int i = 1; i < Battleship.getSizeMap(); i++) {
+            index++;
+            line += "  " + Character.toString(index);
+        }
+
+        line +="\n";
+        char x = 'A';
+        for (int i = 1; i<= Battleship.getSizeMap(); i++){
+            if(i<10){
+                line += " "+Integer.toString(i);
+            }
+            else{
+                line += Integer.toString(i);
+            }
+
+            //Chiffre
+            x = 'A';
+            for(int y = 1; y <= Battleship.getSizeMap(); y++ ){
+                String coord = x + Integer.toString(i);
+                if (isHit(coord)) {
+                    if(isDammagedShip(coord))
+                        line += "  X";
+                    else{
+                        line += "  •";
+                    }
+
+                } else {
+                    line += "   ";
+                }
+                x++;
+            }
+
+            line +="\n";
+        }
+        return line;
+    }
+
 
 }
 

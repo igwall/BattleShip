@@ -1,6 +1,4 @@
-package fr.igwall.Battleship;
-
-import fr.igwall.Battleship.Coordonnee;
+package goncalves.lucas.Elements;
 
 import static java.lang.Character.isLetter;
 

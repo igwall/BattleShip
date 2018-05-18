@@ -1,7 +1,7 @@
-package fr.igwall.Battleship.Player.IA;
-import fr.igwall.Battleship.Player.IA.Bot;
+package goncalves.lucas.Player.IA;
+import goncalves.lucas.Player.IPlaying;
 
-public class IABeginner extends Bot implements IA {
+public class IABeginner extends IA implements IiA,IPlaying {
 
     public IABeginner(){
         super();
