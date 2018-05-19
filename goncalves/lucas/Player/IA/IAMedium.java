@@ -2,7 +2,7 @@ package goncalves.lucas.Player.IA;
 
 import goncalves.lucas.Player.IPlaying;
 
-public class IAMedium extends IA implements IiA,IPlaying {
+public class IAMedium extends IA implements IPlaying {
 
     public IAMedium(){
         super();

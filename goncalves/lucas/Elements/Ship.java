@@ -4,13 +4,13 @@ import static java.lang.Character.isLetter;
 
 // Le bateau possède une coordonnee X (Lettre + Chiffre)  && une coordonnee Y (Lettre + Chiffre)
 public class Ship {
-    private Coordonnee[] position;
+    private Coord[] position;
     private boolean destroyed = false;
 
     public Ship(String startCoord, String endCoord){
         destroyed = false;
-        Coordonnee coord1 = new Coordonnee(startCoord);
-        Coordonnee coord2 = new Coordonnee(endCoord);
+        Coord coord1 = new Coord(startCoord);
+        Coord coord2 = new Coord(endCoord);
         int lenght = 0;
 
 
@@ -43,15 +43,15 @@ public class Ship {
     }
 
 
-    private Coordonnee[] tableGeneratorH(char x1, char x2, int y) {
+    private Coord[] tableGeneratorH(char x1, char x2, int y) {
         int j = 0;
         int length = (int) x1 - (int) x2 + 1;
-        Coordonnee[] tab = new Coordonnee[length];
+        Coord[] tab = new Coord[length];
 
         // ON genère le tableau de coordonnees horizontales
         for (int i = 0; i < tab.length; i++) {
             String coord = x2 + Integer.toString(y);
-            tab[i] = new Coordonnee(coord);
+            tab[i] = new Coord(coord);
             x2++;
         }
 
@@ -59,14 +59,14 @@ public class Ship {
     }
 
 
-    private Coordonnee[] tableGeneratorV(int y1, int y2, char x) {
+    private Coord[] tableGeneratorV(int y1, int y2, char x) {
         int j = 0;
         int length = y1 - y2 + 1;
         int k = y2;
-        Coordonnee[] tab = new Coordonnee[length];
+        Coord[] tab = new Coord[length];
         for (int i = 0; i < tab.length; i++) {
             String valeur = x + Integer.toString(k);
-            Coordonnee coord = new Coordonnee(valeur);
+            Coord coord = new Coord(valeur);
             tab[i] = coord;
             k++;
         }
@@ -89,7 +89,7 @@ public class Ship {
     }
 
     public void editHit(String shot){
-        for(Coordonnee c : position){
+        for(Coord c : position){
             if(c.equals(shot)){
                 c.setHit();
             }
@@ -119,7 +119,7 @@ public class Ship {
 
     public boolean isDammaged(String coord){
         boolean dammaged = false;
-        for(Coordonnee c : position){
+        for(Coord c : position){
             if(c.equals(coord)){
                 if(c.getHit()){
                     dammaged = true;
@@ -134,7 +134,7 @@ public class Ship {
 
     public void getCoord(){
         String line ="";
-        for(Coordonnee c : position){
+        for(Coord c : position){
             line+= c.getValue()+", ";
 
         }

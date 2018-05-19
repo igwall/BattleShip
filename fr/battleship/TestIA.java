@@ -1,7 +1,8 @@
 package fr.battleship;
 
-import goncalves.lucas.Elements.Coordonnee;
-import goncalves.lucas.Player.IA.IA;
+import goncalves.lucas.Battleship;
+import goncalves.lucas.Elements.Coord;
+import goncalves.lucas.Player.IPlaying;
 import goncalves.lucas.Player.IA.IABeginner;
 import goncalves.lucas.Player.IA.IAHardcore;
 import goncalves.lucas.Player.IA.IAMedium;
@@ -16,8 +17,8 @@ public class TestIA {
 
     public static void main(String[] args) throws IOException {
         FileWriter file = new FileWriter("ai_proof.csv");
-        IA iA1;
-        IA iA2;
+        IPlaying iA1;
+        IPlaying iA2;
 
         System.out.println("==== ==== ==== ");
         iA1 = new IABeginner();
@@ -49,13 +50,15 @@ public class TestIA {
     }
 
 
-    private static String iaFighter(IA player1, IA player2){
+    private static String iaFighter(IPlaying player1, IPlaying player2){
         int scoreiA1 = 0;
         int scoreiA2 = 0;
-        int nbShip = 5;
-        System.out.println("========");
+        int nbShip = Battleship.getNbShip();
+        int CountOfGames = 0;
+        IPlaying currentIA;
+        IPlaying oppositeIA;
         for (int i = 0; i < 100; i++) {
-            IA iA1;
+        		IPlaying iA1;
             if (player1 instanceof IABeginner){
                 iA1 = new IABeginner();
             }
@@ -68,7 +71,7 @@ public class TestIA {
 
             iA1.createFleet();
 
-            IA iA2;
+            IPlaying iA2;
             if (player2 instanceof IABeginner){
                 iA2 = new IABeginner();
             }
@@ -78,37 +81,38 @@ public class TestIA {
             else{
                 iA2 = new IAHardcore();
             }
-
             iA2.createFleet();
+
+            if(CountOfGames%2 == 0){
+                currentIA = iA1;
+                oppositeIA = iA2;
+            }else{
+                currentIA = iA2;
+                oppositeIA = iA1;
+            }
+
 
             while (iA1.getScore() < nbShip && iA2.getScore() < nbShip) {
 
-                String shot = iA1.getShot();
-                boolean hit = iA2.isHit(shot);
+                String shot = currentIA.getShot();
+                boolean hit = oppositeIA.isHit(shot);
                 if(hit){
-                    iA2.editShipHit(shot);
-                    Coordonnee newShot = new Coordonnee(shot);
+                    oppositeIA.editShipHit(shot);
+                    Coord newShot = new Coord(shot);
                     newShot.setHit();
-                    iA1.addShot(newShot);
-                    iA1.setScore(iA2.getCountDestroyed());
+                    currentIA.addShot(newShot);
+                    currentIA.setScore(oppositeIA.getCountDestroyed());
                 } else {
-                    Coordonnee newShot = new Coordonnee(shot);
-                    iA1.addShot(newShot);
+                    Coord newShot = new Coord(shot);
+                    currentIA.addShot(newShot);
                 }
 
-
-
-                String shot2 = iA2.getShot();
-                boolean hit2 = iA1.isHit(shot2);
-                if (hit2) {
-                    iA1.editShipHit(shot2);
-                    Coordonnee newShot2 = new Coordonnee(shot2);
-                    newShot2.setHit();
-                    iA2.addShot(newShot2);
-                    iA2.setScore(iA1.getCountDestroyed());
-                } else {
-                    Coordonnee newShot2 = new Coordonnee(shot2);
-                    iA2.addShot(newShot2);
+                if(currentIA.equals(iA1)){
+                    currentIA = iA2;
+                    oppositeIA = iA1;
+                }else{
+                    currentIA = iA1;
+                    oppositeIA = iA2;
                 }
 
             }
@@ -117,10 +121,11 @@ public class TestIA {
             } else {
                 scoreiA2++;
             }
+            CountOfGames ++;
         }
         setScoreIA1(scoreiA1);
         setScoreIA2(scoreiA2);
-        return "Score de l'IA 1: "+scoreiA1+"\n Score de l'IA2: "+scoreiA2;
+        return "Score de l'IA 1: "+scoreiA1+"\nScore de l'IA2: "+scoreiA2;
 
     }
 

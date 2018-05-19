@@ -1,6 +1,6 @@
 package goncalves.lucas.Player.IA;
 
-import goncalves.lucas.Elements.Coordonnee;
+import goncalves.lucas.Elements.Coord;
 import goncalves.lucas.Player.IPlaying;
 
 public class IAHardcore extends IA implements IPlaying {
@@ -14,7 +14,7 @@ public class IAHardcore extends IA implements IPlaying {
     private int yInitialHit;
     private char xLastShot;
     private int yLastShot;
-    private Coordonnee lastShot;
+    private Coord lastShot;
 
     public IAHardcore(){
         super();
@@ -118,7 +118,7 @@ public class IAHardcore extends IA implements IPlaying {
         letter++;
         int number = yLastShot;
         coord = letter + Integer.toString(number);
-        int controlInput = Coordonnee.controlInput(coord);
+        int controlInput = Coord.controlInput(coord);
         if(controlInput !=0){
             coord = shotLeft();
         }
@@ -140,7 +140,7 @@ public class IAHardcore extends IA implements IPlaying {
             int number = yInitialHit;
             letter--;
             coord = letter + Integer.toString(number);
-            int controlInput = Coordonnee.controlInput(coord);
+            int controlInput = Coord.controlInput(coord);
             if(controlInput !=0){
                 coord = shotUp();
             }
@@ -158,7 +158,7 @@ public class IAHardcore extends IA implements IPlaying {
             letter--;
             int number = yLastShot;
             coord = letter + Integer.toString(number);
-            int controlInput = Coordonnee.controlInput(coord);
+            int controlInput = Coord.controlInput(coord);
             if(controlInput !=0){
                 coord = shotUp();
             }
@@ -181,7 +181,7 @@ public class IAHardcore extends IA implements IPlaying {
             int number = yInitialHit;
             number++;
             coord = letter + Integer.toString(number);
-            int controlInput = Coordonnee.controlInput(coord);
+            int controlInput = Coord.controlInput(coord);
             if(controlInput !=0){
                 coord = shotDown();
             }
@@ -199,7 +199,7 @@ public class IAHardcore extends IA implements IPlaying {
             int number = yLastShot;
             number++;
             coord = letter + Integer.toString(number);
-            int controlInput = Coordonnee.controlInput(coord);
+            int controlInput = Coord.controlInput(coord);
             if(controlInput !=0){
                 coord = shotDown();
             }
@@ -222,7 +222,7 @@ public class IAHardcore extends IA implements IPlaying {
             int number = yInitialHit;
             number--;
             coord = letter + Integer.toString(number);
-            int controlInput = Coordonnee.controlInput(coord);
+            int controlInput = Coord.controlInput(coord);
             if(controlInput !=0){
                 coord = randomShot();
             }
@@ -240,7 +240,7 @@ public class IAHardcore extends IA implements IPlaying {
             int number = yLastShot;
             number--;
             coord = letter + Integer.toString(number);
-            int controlInput = Coordonnee.controlInput(coord);
+            int controlInput = Coord.controlInput(coord);
             if(controlInput !=0){
                 coord = randomShot();
             }

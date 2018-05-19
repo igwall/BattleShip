@@ -1,5 +1,5 @@
 package goncalves.lucas.Player;
-import goncalves.lucas.Elements.Coordonnee;
+import goncalves.lucas.Elements.Coord;
 import goncalves.lucas.Elements.Ship;
 import goncalves.lucas.Battleship;
 
@@ -14,8 +14,7 @@ public class Human implements IPlaying{
     int[] capacity;
     List<Ship> army = new ArrayList<Ship>();
     String name;
-    int token;
-    List<Coordonnee> shot = new ArrayList<>();
+    List<Coord> shot = new ArrayList<>();
 
 
     public Human(String name) {
@@ -23,10 +22,6 @@ public class Human implements IPlaying{
         this.capacity = new int[]{0,0,1,2,1,1};
     }
 
-    public Human(){
-            this.name = "Jarvis";
-            this.capacity = new int[]{0,0,1,2,1,1};
-    }
 
     public String getShot() {
         boolean allcheck = false;
@@ -37,7 +32,7 @@ public class Human implements IPlaying{
                 System.out.println("Please input the value of your shot :");
                 Scanner inputCoord = new Scanner(System.in);
                 shot = inputCoord.next();
-                coordCheck = Coordonnee.controlInput(shot);
+                coordCheck = Coord.controlInput(shot);
                 switch (coordCheck) {
                     case 1:
                         System.out.println("Too many letters in your input, not correct");
@@ -55,7 +50,7 @@ public class Human implements IPlaying{
                         System.out.println("Your shot is correct.");
                 }
             }
-            Coordonnee coord = new Coordonnee(shot);
+            Coord coord = new Coord(shot);
             if (this.isShooted(shot)) {
                 allcheck = false;
                 System.out.println("You've already shot there... please enter an other shot: ");
@@ -86,7 +81,7 @@ public class Human implements IPlaying{
                     System.out.println("Please input the first coord :");
                     Scanner inputCoord1 = new Scanner(System.in);
                     coord1 = inputCoord1.next();
-                    coord1Check = Coordonnee.controlInput(coord1);
+                    coord1Check = Coord.controlInput(coord1);
                     switch (coord1Check) {
                         case 1:
                             System.out.println("Too many letters in your input... try something like A1 - a1 - 1a - 1A");
@@ -111,7 +106,7 @@ public class Human implements IPlaying{
                     System.out.println("Please input the second coord :");
                     Scanner inputCoord2 = new Scanner(System.in);
                     coord2 = inputCoord2.next();
-                    coord2Check = Coordonnee.controlInput(coord2);
+                    coord2Check = Coord.controlInput(coord2);
                     switch (coord2Check) {
                         case 1:
                             System.out.println("Too many letters in your input... try something like A1 - a1 - 1a - 1A");
@@ -134,7 +129,7 @@ public class Human implements IPlaying{
 
                 positionCheck = positionControl(coord1, coord2);
                 if (positionCheck) {
-                    int length = Coordonnee.calcLength(coord1, coord2);
+                    int length = Coord.calcLength(coord1, coord2);
                     positionAvailable = isAvailableShipLength(length);
                     if (positionAvailable) {
                         allCheck = true;
@@ -165,8 +160,8 @@ public class Human implements IPlaying{
     public boolean isShooted(String coord){
         boolean inList = false;
         int i = 0;
-        for (Coordonnee coordMyShot : shot){
-            coord = Coordonnee.traitment(coord);
+        for (Coord coordMyShot : shot){
+            coord = Coord.traitment(coord);
             if( coordMyShot.equals(coord)){
                 inList = true;
             }
@@ -178,7 +173,7 @@ public class Human implements IPlaying{
     public boolean isHitSHot(String input){
         boolean inList = false;
         int i = 0;
-        for (Coordonnee coordMyShot : shot){
+        for (Coord coordMyShot : shot){
             if( coordMyShot.equals(input)){
                 inList = coordMyShot.getHit();
             }
@@ -269,7 +264,7 @@ public class Human implements IPlaying{
         this.score = score;
     }
 
-    public void addShot(Coordonnee coord){
+    public void addShot(Coord coord){
         shot.add(coord);
     }
 
@@ -279,10 +274,10 @@ public class Human implements IPlaying{
 
     public boolean positionControl(String coord1,String coord2){
         boolean positionCheck = true;
-        char startX = Coordonnee.calcX(coord1);
-        int startY = Coordonnee.calcY(coord1);
-        char endX = Coordonnee.calcX(coord2);
-        int endY = Coordonnee.calcY(coord2);
+        char startX = Coord.calcX(coord1);
+        int startY = Coord.calcY(coord1);
+        char endX = Coord.calcX(coord2);
+        int endY = Coord.calcY(coord2);
         int length = 0;
 
         if (startX != endX && startY == endY) {

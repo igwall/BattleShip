@@ -1,6 +1,6 @@
 package goncalves.lucas;
 
-import goncalves.lucas.Elements.Coordonnee;
+import goncalves.lucas.Elements.Coord;
 import goncalves.lucas.Player.*;
 import goncalves.lucas.Player.IA.*;
 
@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Battleship {
     static private int sizeMap = 10;
-    static private int nbShip = 5;
+    static private int nbShip = 1;
 
     public static void main(String[] args) throws InterruptedException {
         boolean goodChoice = false;
@@ -79,13 +79,13 @@ public class Battleship {
                         boolean hit = oppositePlayer.isHit(shot);
                         if (hit) {
                             oppositePlayer.editShipHit(shot);
-                            Coordonnee newShot = new Coordonnee(shot);
+                            Coord newShot = new Coord(shot);
                             newShot.setHit();
                             System.out.println("You've hit a ship !");
                             currentPlayer.addShot(newShot);
                             currentPlayer.setScore(oppositePlayer.getCountDestroyed());
                         } else {
-                            Coordonnee newShot = new Coordonnee(shot);
+                            Coord newShot = new Coord(shot);
                             currentPlayer.addShot(newShot);
                             System.out.println("You've missed your shot :( ");
                         }
@@ -119,14 +119,18 @@ public class Battleship {
                         }
                     }
 
-                    System.out.println("Would you like to play one more time ? \n Type 'yes' ");
+                    System.out.println("Would you like to play one more time ? \n Type 'yes' to play \nType anything else to stop ");
 
                     Scanner input = new Scanner(System.in);
                     String answer = input.next();
                     if(answer.equals("yes")) {
-                        stopGame = true;
+                        stopGame = false;
                         countOfGames ++;
+                        System.out.println("Total actuel des scores : \n"+
+                                player1.getName()+": "+ScoreTotalPlayer1+ "\n" +
+                                player2.getName()+": "+ScoreTotalPlayer2);
                     }
+                    else {stopGame = true;}
 
 
                 }
@@ -140,10 +144,11 @@ public class Battleship {
                 System.out.println("Player one, please type your name: ");
                 Scanner scan = new Scanner(System.in);
                 String name = scan.next();
-                IPlaying player1 = new Human(name);
-                IPlaying player2;
+                IPlaying player1 = null;
+                IPlaying player2 = null;
                 int ScoreTotalPlayer1 = 0;
                 int ScoreTotalPlayer2 = 0;
+                int levelIA = 0;
                 System.out.println("Now, you will choose the level of your IA\n" +
                 "Type B for a Beginnner level (easy to beat)\n"+
                 "Type M for a Medium level (little bit harder)\n"+
@@ -152,31 +157,40 @@ public class Battleship {
                 Scanner levelChoice = new Scanner(System.in);
                 String level = levelChoice.next();
 
-                if(level.equals("B")){
-                    player2 = new IABeginner();
-                }
-                else if(level.equals("M")){
-                    player2 = new IAMedium();
-                }
-                else{
-                    player2 = new IAHardcore();
-                }
+                if(level.equals("B")){levelIA = 0;}
+                else if(level.equals("M")){levelIA = 1;}
+                else{levelIA = 2;}
 
                 goodChoice = true;
 
-                //========= DEBUT SOLO
                 boolean stopGame = false;
                 int countOfGames = 0;
-                IPlaying currentPlayer;
-                IPlaying oppositePlayer;
+
                 while(!stopGame) {
-                    if (countOfGames % 2 == 0) {
+
+                    player1 = new Human(name);
+                    if(levelIA == 0) {
+                    	player2 = new IABeginner();
+                    }else if(levelIA == 1) {
+                    	player2 = new IAMedium();
+                    }else {
+                    	player2 =  new IAHardcore();
+                    }
+                    IPlaying currentPlayer;
+                    IPlaying oppositePlayer;
+                    IPlaying playerBeginner;
+
+                    if(countOfGames%2 ==0){
                         currentPlayer = player1;
                         oppositePlayer = player2;
-                    } else {
+                        playerBeginner = player1;
+                    }
+                    else{
                         currentPlayer = player2;
                         oppositePlayer = player1;
+                        playerBeginner = player2;
                     }
+
 
                     currentPlayer.createFleet();
                     oppositePlayer.createFleet();
@@ -195,13 +209,13 @@ public class Battleship {
                         boolean hit = oppositePlayer.isHit(shot);
                         if (hit) {
                             oppositePlayer.editShipHit(shot);
-                            Coordonnee newShot = new Coordonnee(shot);
+                            Coord newShot = new Coord(shot);
                             newShot.setHit();
                             System.out.println("You've hit a ship !");
                             currentPlayer.addShot(newShot);
                             currentPlayer.setScore(oppositePlayer.getCountDestroyed());
                         } else {
-                            Coordonnee newShot = new Coordonnee(shot);
+                            Coord newShot = new Coord(shot);
                             currentPlayer.addShot(newShot);
                             System.out.println("You've missed your shot :( ");
                         }
@@ -227,7 +241,7 @@ public class Battleship {
                         ScoreTotalPlayer2++;
                     }
 
-                    System.out.println("Would you like to play one more time ? \n Type 'yes' ");
+                    System.out.println("Would you like to play one more time ? \nType 'yes' to play \nType anything else to stop");
 
                     Scanner input = new Scanner(System.in);
                     String answer = input.next();
@@ -235,7 +249,7 @@ public class Battleship {
                         stopGame = false;
                         countOfGames ++;
                     }else{
-                        stopGame = false;
+                        stopGame = true;
                     }
                 }
 
@@ -243,21 +257,13 @@ public class Battleship {
                                     player1.getName()+": "+ScoreTotalPlayer1+ "\n" +
                                     player2.getName()+": "+ScoreTotalPlayer2);
 
-
-            }else if(letter == 'U'){
-
-
-
-
             } else {
                 System.out.println("Life is easy. Why do we make it so hard ?");
             }
         }
 
     }
-
-
-
+    
     public static int getSizeMap(){
         return sizeMap;
     }
@@ -265,9 +271,6 @@ public class Battleship {
     public static int getNbShip() {
         return nbShip;
     }
-
-
-
 }
 
 

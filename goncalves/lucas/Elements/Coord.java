@@ -4,14 +4,14 @@ import goncalves.lucas.Battleship;
 
 import static java.lang.Character.isLetter;
 
-public class Coordonnee {
+public class Coord {
     private char x;
     private int y;
     private boolean hit;
     private String value;
 
 
-    public Coordonnee(String coord) {
+    public Coord(String coord) {
         this.x = calcX(coord);
         this.y = calcY(coord);
         this.hit = false;
@@ -52,43 +52,42 @@ public class Coordonnee {
         int i = 0;
 
         while( i < coord.length() && correctInput){
+
             if(isLetter(coord.charAt(i))){
                 countLetter +=1;
                 if(countLetter > 1){
                     correctInput = false;
                     coordCheck = 1;
                 }
-                i++;
-            }
-            else if (isSpecialCharacter(coord.charAt(i))){
+                else {
+                    i++;
+                }
+            }else if (isSpecialCharacter(coord.charAt(i))){
                 coordCheck = 2;
                 correctInput = false;
-            }
-            else if(countLetter ==0){
-                correctInput = false;
-            }
-            else{
+            }else {
                 i++;
             }
         }
-
-
-        if (correctInput){
+        if(countLetter ==0){
+            correctInput = false;
+            coordCheck = 3;
+        }
+        else if (correctInput){
             if(isOnGrid(coord)) {
                 coordCheck = 0;
             }
             else{
                 coordCheck = 4;
             }
-        }else{
-            coordCheck = 3;
+        }else {
+
         }
         return coordCheck;
     }
 
-
     public static boolean isOnGrid(String coord){
-        Coordonnee coordToCheck = new Coordonnee(coord);
+        Coord coordToCheck = new Coord(coord);
         int x = Character.getNumericValue(coordToCheck.getX())-9;
         int y = coordToCheck.getY();
         return (x <= Battleship.getSizeMap()
@@ -104,10 +103,10 @@ public class Coordonnee {
 
     public static int calcLength(String coord1, String coord2){
         boolean lengthCheck;
-        char startX = Coordonnee.calcX(coord1);
-        int startY = Coordonnee.calcY(coord1);
-        char endX = Coordonnee.calcX(coord2);
-        int endY = Coordonnee.calcY(coord2);
+        char startX = Coord.calcX(coord1);
+        int startY = Coord.calcY(coord1);
+        char endX = Coord.calcX(coord2);
+        int endY = Coord.calcY(coord2);
         int length = 0;
         if (startX != endX && startY == endY) {
             if (startX > endX) {

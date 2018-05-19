@@ -1,6 +1,6 @@
 package goncalves.lucas.Player;
 
-import goncalves.lucas.Elements.Coordonnee;
+import goncalves.lucas.Elements.Coord;
 
 public interface IPlaying {
 
@@ -20,7 +20,7 @@ public interface IPlaying {
 
     public boolean isHit(String shot);
 
-    public void addShot(Coordonnee coord);
+    public void addShot(Coord coord);
 
     public void setScore(int score);
 

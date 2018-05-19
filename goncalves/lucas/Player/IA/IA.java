@@ -1,5 +1,5 @@
 package goncalves.lucas.Player.IA;
-import goncalves.lucas.Elements.Coordonnee;
+import goncalves.lucas.Elements.Coord;
 import goncalves.lucas.Battleship;
 import goncalves.lucas.Elements.Ship;
 import java.util.ArrayList;
@@ -7,15 +7,14 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public abstract class IA implements IiA {
+public abstract class IA  {
 
     int score = 0; // Nombre de bateau détruit par le joueur
     //Contient l'ensemble des bateaux du joueur
     int[] capacity;
     List<Ship> army = new ArrayList<Ship>();
     String name;
-    int token;
-    List<Coordonnee> shot = new ArrayList<>();
+    List<Coord> shot = new ArrayList<>();
     public IA(){
         this.name = "Jarvis";
         this.capacity = new int[]{0,0,1,2,1,1};
@@ -62,11 +61,11 @@ public abstract class IA implements IiA {
 
                 }
 
-                boolean coord2control = Coordonnee.isOnGrid(coord2);
+                boolean coord2control = Coord.isOnGrid(coord2);
                 if(coord2control) {
                     positionCheck = this.positionControl(coord1, coord2);
                     if (positionCheck) {
-                        int length = Coordonnee.calcLength(coord1, coord2);
+                        int length = Coord.calcLength(coord1, coord2);
 
                         positionAvailable = this.isAvailableShipLength(length);
                         if (positionAvailable) {
@@ -111,43 +110,6 @@ public abstract class IA implements IiA {
         //I tried another approaches here, still the same result
     }
 
-    public String getShot() {
-        boolean allcheck = false;
-        String shot = "";
-        while (!allcheck) {
-            int coordCheck = -1;
-            while (coordCheck != 0) {
-                System.out.println("Please input the value of your shot :");
-                Scanner inputCoord = new Scanner(System.in);
-                shot = inputCoord.next();
-                coordCheck = Coordonnee.controlInput(shot);
-                switch (coordCheck) {
-                    case 1:
-                        System.out.println("Too many letters in your input, not correct");
-                        break;
-                    case 2:
-                        System.out.println("There a special character... What could I do with it ?!");
-                        break;
-                    case 3:
-                        System.out.println("The input is not valid... try something like A1 - a1 - 1a - 1A");
-                        break;
-                    case 4:
-                        System.out.println("Your input is not in this grid... ");
-                        break;
-                    default:
-                        System.out.println("Your shot is correct.");
-                }
-            }
-            Coordonnee coord = new Coordonnee(shot);
-            if (this.isShooted(shot)) {
-                allcheck = false;
-                System.out.println("You've already shot there... please enter an other shot: ");
-            } else {
-                allcheck = true;
-            }
-        }
-        return shot;
-    }
 
     public void addShip(Ship ship){
         this.army.add(ship);
@@ -157,11 +119,11 @@ public abstract class IA implements IiA {
 
 
     /** Checking if the shot input is already in the list of shot by the player */
-    public boolean isShooted(String coord){
+    protected boolean isShooted(String coord){
         boolean inList = false;
         int i = 0;
-        for (Coordonnee coordMyShot : shot){
-            coord = Coordonnee.traitment(coord);
+        for (Coord coordMyShot : shot){
+            coord = Coord.traitment(coord);
             if( coordMyShot.equals(coord)){
                 inList = true;
             }
@@ -170,10 +132,10 @@ public abstract class IA implements IiA {
     }
 
     /** Look if the shot input is a shot who hit a ship*/
-    public boolean isHitSHot(String input){
+    private boolean isHitSHot(String input){
         boolean inList = false;
         int i = 0;
-        for (Coordonnee coordMyShot : shot){
+        for (Coord coordMyShot : shot){
             if( coordMyShot.equals(input)){
                 inList = coordMyShot.getHit();
             }
@@ -194,7 +156,7 @@ public abstract class IA implements IiA {
     }
 
 
-    public boolean isDammagedShip(String coord){
+    private boolean isDammagedShip(String coord){
         boolean dammaged = false;
         for(Ship s : army ){
             if(s.isDammaged(coord)){
@@ -205,7 +167,7 @@ public abstract class IA implements IiA {
     }
 
     /** Control if the length input as attribute is available in the capacity of ship available for the player*/
-    public boolean isAvailableShipLength(int length){
+    private boolean isAvailableShipLength(int length){
         boolean available;
         if(length > capacity.length -1 || length <0){
             available = false;
@@ -264,20 +226,20 @@ public abstract class IA implements IiA {
         this.score = score;
     }
 
-    public void addShot(Coordonnee coord){
+    public void addShot(Coord coord){
         shot.add(coord);
     }
 
-    public void editAvailableShip(int length){
+    private void editAvailableShip(int length){
         capacity[length] -= 1;
     }
 
-    public boolean positionControl(String coord1,String coord2){
+    private boolean positionControl(String coord1,String coord2){
         boolean positionCheck = true;
-        char startX = Coordonnee.calcX(coord1);
-        int startY = Coordonnee.calcY(coord1);
-        char endX = Coordonnee.calcX(coord2);
-        int endY = Coordonnee.calcY(coord2);
+        char startX = Coord.calcX(coord1);
+        int startY = Coord.calcY(coord1);
+        char endX = Coord.calcX(coord2);
+        int endY = Coord.calcY(coord2);
         int length = 0;
 
         if (startX != endX && startY == endY) {
