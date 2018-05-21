@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Battleship {
     static private int sizeMap = 10;
-    static private int nbShip = 1;
+    static private int nbShip = 5;
 
     public static void main(String[] args) throws InterruptedException {
         boolean goodChoice = false;
