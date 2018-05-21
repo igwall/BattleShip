@@ -45,7 +45,7 @@ public class TestIA {
         System.out.println(resultOfFigth);
         buffer.append("AI Level Medium;"+scoreIA1+";Level Hardcore;"+scoreIA2+"\n");
         file.write(buffer.toString());
-        file.close();
+        file.close();        
 
     }
 
@@ -79,6 +79,7 @@ public class TestIA {
                 iA2 = new IAMedium();
             }
             else{
+            		
                 iA2 = new IAHardcore();
             }
             iA2.createFleet();
